@@ -1,0 +1,70 @@
+.section {
+  padding: 80px 6vw;
+  background-color: #FFFFFF; /* Fond blanc */
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 50px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.card {
+  background-color: #f8f9fa; /* Fond de carte légèrement grisé */
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #eee;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.authorName {
+  font-weight: 600;
+  color: #2F3640;
+}
+
+.rating {
+  display: flex;
+  gap: 2px;
+}
+
+.starFilled {
+  color: #FFC107; /* Jaune doré */
+}
+
+.starEmpty {
+  color: #e0e0e0; /* Gris clair */
+}
+
+.comment {
+  font-style: italic;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}

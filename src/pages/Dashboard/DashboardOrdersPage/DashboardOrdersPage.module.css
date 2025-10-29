@@ -1,0 +1,102 @@
+
+.page { 
+  display: flex; 
+  background-color: #f8f9fa; /* Un fond gris très clair pour l'application */
+  min-height: 100vh; /* La page prend au moins toute la hauteur de l'écran */
+}
+
+/* --- Conteneur du Contenu Principal (tout ce qui est à droite de la sidebar) --- */
+.mainContent { 
+  flex-grow: 1; /* Prend tout l'espace restant */
+  padding: 40px; 
+  overflow-x: auto; /* Permet de scroller horizontalement sur très petits écrans si besoin */
+}
+
+.mainContent h1 { 
+  font-size: 2.2rem; 
+  font-weight: 700; 
+  color: #2F3640;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+/* --- Vue Kanban --- */
+.kanbanBoard { 
+  display: grid;
+  /* 3 colonnes de taille égale, qui prendront chacune une fraction de l'espace */
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 32px; /* Espace entre les colonnes */
+}
+
+/* --- Colonne Individuelle du Kanban --- */
+.kanbanColumn { 
+  background-color: #eff2f5; /* Un gris un peu plus foncé que le fond de page */
+  border-radius: 16px; 
+  display: flex; 
+  flex-direction: column; /* Les éléments à l'intérieur s'empilent verticalement */
+}
+
+.columnHeader { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+  padding: 16px; 
+  border-bottom: 1px solid #e0e4e8; /* Ligne de séparation */
+}
+
+.columnHeader h2 { 
+  font-size: 1rem; 
+  margin: 0; 
+  font-weight: 600; 
+  color: #333; 
+}
+
+/* Points de couleur pour le statut */
+.statusDot { 
+  width: 10px; 
+  height: 10px; 
+  border-radius: 50%;
+  flex-shrink: 0; /* Empêche le point de se déformer */
+}
+.new { background-color: #ffc107; } /* Jaune */
+.preparing { background-color: #007bff; } /* Bleu */
+.ready { background-color: #28a745; } /* Vert */
+
+.columnContent { 
+  padding: 16px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 16px; /* Espace entre chaque ticket de commande */
+  flex-grow: 1; /* Fait en sorte que le contenu remplisse la colonne */
+  min-height: 300px; /* Hauteur minimale pour que les colonnes vides aient une apparence */
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) { /* Pour écrans un peu plus petits */
+  .kanbanBoard {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 992px) { /* Pour tablettes */
+  .kanbanBoard {
+    /* Sur tablette, on passe à une seule colonne pour la lisibilité */
+    grid-template-columns: 1fr; 
+  }
+}
+
+@media (max-width: 768px) { 
+  .page {
+    /* Sur mobile, la sidebar pourrait être cachée et le contenu prendre toute la place */
+    /* Pour l'instant, on se concentre sur le layout desktop/tablette */
+  }
+
+  .mainContent {
+    padding: 24px;
+  }
+}

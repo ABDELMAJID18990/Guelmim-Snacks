@@ -1,0 +1,150 @@
+/* --- Variables --- */
+:root {
+  --primary-color: #ff6347;
+  --text-dark: #2F3640;
+  --text-light: #777;
+  --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* --- Conteneur Principal de la Carte --- */
+/* La position relative est CRUCIALE pour pouvoir positionner le bouton "Ajouter" */
+.card {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 16px;
+  overflow: visible; /* On laisse le bouton "dépasser" légèrement */
+  box-shadow: var(--card-shadow);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.25s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Section Image --- */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  padding-top: 66.66%; /* Ratio 3:2 */
+}
+
+.dishImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px 16px 0 0; /* Coins arrondis seulement en haut */
+}
+
+/* On peut réutiliser le style du bouton favori */
+.favoriteButton {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.favoriteButton:hover {
+  background-color: white;
+  transform: scale(1.1);
+  color: #ff0000;
+}
+
+/* --- Bouton Ajouter (positionné en absolu) --- */
+.addButton {
+  position: absolute;
+  /* Il est positionné par rapport au bas de la section image */
+  bottom: 110px; /* À ajuster pour qu'il soit à cheval sur l'image et le contenu */
+  right: 20px;
+  
+  background-color: var(--primary-color);
+  color: white;
+  border: 4px solid white; /* Crée l'effet "découpé" */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 99, 71, 0.3);
+  transition: all 0.2s ease;
+}
+.addButton:hover {
+  transform: scale(1.1) rotate(90deg);
+}
+
+/* --- Section Contenu Textuel --- */
+.content {
+  padding: 20px;
+  padding-top: 25px; /* On ajoute plus d'espace en haut à cause du bouton qui dépasse */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  line-height: 1.5;
+  margin: 0;
+  /* Limite la description à 2 lignes */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Pied de Carte (Prix et Temps) --- */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--primary-color);
+}
+
+.prepTime {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  font-weight: 500;
+  background-color: #f0f0f0;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.icon {
+  font-size: 1rem;
+}

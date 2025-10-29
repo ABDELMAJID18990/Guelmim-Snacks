@@ -1,0 +1,118 @@
+/* --- Styles de la Page de Connexion --- */
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Deux colonnes de taille égale */
+  height: 90vh; /* La page prend toute la hauteur de l'écran */
+  background-color: #FFFFFF;
+}
+
+/* --- Colonne de Gauche --- */
+.illustrationSide {
+  background-color: #ffffff; /* Un fond orange très clair */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.illustrationSide img {
+  max-width: 90%;
+  height: auto;
+}
+
+/* --- Colonne de Droite --- */
+.formSide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+}
+.logo { height: 50px; margin-bottom: 24px; }
+.formContainer h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 32px; color: #2F3640; }
+.formGroup { margin-bottom: 20px; }
+
+.forgotPassword { text-align: right; font-size: 0.9rem; margin-bottom: 24px; }
+.forgotPassword a { color: #FF6347; text-decoration: none; }
+.forgotPassword a:hover { text-decoration: underline; }
+
+.loginButton {
+  width: 100%;
+  padding: 14px;
+  background-color: #FF6347;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.loginButton:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(255, 99, 71, 0.25); }
+
+.separator {
+  text-align: center;
+  margin: 24px 0;
+  color: #aaa;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.separator::before, .separator::after { content: ''; flex-grow: 1; height: 1px; background-color: #ddd; }
+.separator::before { margin-right: 16px; }
+.separator::after { margin-left: 16px; }
+
+.socialLogin { display: flex; flex-direction: column; gap: 16px; }
+
+.socialButton {
+  width: 100%;
+  padding: 12px;
+  background-color: transparent;
+  color: #555;
+  border: 2px solid #eee;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.socialButton:hover { border-color: #ccc; background-color: #f9f9f9; }
+
+.signUpLink {
+  text-align: center;
+  margin-top: 32px;
+  color: #555;
+}
+.signUpLink a { color: #FF6347; text-decoration: none; font-weight: 600; }
+.signUpLink a:hover { text-decoration: underline; }
+
+/* --- Responsive --- */
+@media (max-width: 900px) {
+  .page {
+    grid-template-columns: 1fr; /* Une seule colonne */
+  }
+  .illustrationSide {
+    display: none; /* On cache l'illustration sur les petits écrans */
+  }
+  .formSide {
+    background-image: url('../../../assets/images/login-illustration.svg'); /* On met l'illustration en fond léger */
+    background-size: cover;
+    background-position: center;
+  }
+  .formContainer {
+    background-color: rgba(255,255,255,0.95);
+    padding: 30px;
+    border-radius: 16px;
+    backdrop-filter: blur(5px);
+  }
+}
