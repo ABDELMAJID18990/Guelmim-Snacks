@@ -4,14 +4,9 @@ import Footer from '../../components/layout/Footer/Footer';
 import styles from './CartPage.module.css';
 import { FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
 
-// --- Données Factices pour le Panier (ce qui viendrait de l'état global) ---
-const initialCartItems = [
-  { id: 2, name: "Tacos Poulet Spécial", price: 35.00, quantity: 2, imageUrl: "https://images.unsplash.com/photo-1562086181-4494c643194a" },
-  { id: 5, name: "Pizza 4 Fromages", price: 55.00, quantity: 1, imageUrl: "https://images.unsplash.com/photo-1628834692784-766432b50935" },
-];
 
-function CartPage() {
-  const [cartItems, setCartItems] = useState(initialCartItems);
+
+function CartPage({ cartItems, onQuantityChange, onRemoveItem }) {
 
   // Calcule le sous-total
   const subtotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -19,17 +14,14 @@ function CartPage() {
   // (Logique factice pour les boutons - à connecter plus tard)
   const handleQuantityChange = (itemId, newQuantity) => {
     if (newQuantity < 1) return; // Empêche la quantité de descendre en dessous de 1
-    console.log(`Changer la quantité pour l'article ${itemId} à ${newQuantity}`);
-    // Ici, vous mettriez à jour l'état du panier
+    onQuantityChange(itemId, newQuantity);    // Ici, vous mettriez à jour l'état du panier
   };
   const handleRemoveItem = (itemId) => {
-    console.log(`Supprimer l'article ${itemId}`);
-    // Ici, vous filtreriez le tableau cartItems pour supprimer l'article
+    onRemoveItem(itemId);    
   };
 
   return (
-    <div className={styles.page}>
-      <Navbar />
+    
 
       <main className={styles.container}>
         <h1>Votre Panier</h1>
@@ -80,8 +72,6 @@ function CartPage() {
         </div>
       </main>
 
-      <Footer />
-    </div>
   );
 }
 

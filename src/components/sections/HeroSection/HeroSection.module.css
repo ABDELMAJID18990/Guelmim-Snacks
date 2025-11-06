@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 40px; /* Espace entre le texte et l'image */
-  padding: 80px 6vw; /* 80px en haut/bas, 6% de la largeur de l'écran sur les côtés */
+  padding: 20px 6vw; /* 80px en haut/bas, 6% de la largeur de l'écran sur les côtés */
   background-color: #f8f9fa; /* Fond très légèrement grisé */
   min-height: 85vh; /* Hauteur minimale pour prendre de la place */
 }
@@ -91,7 +91,7 @@
   }
 
   .imageContainer {
-    margin-top: 30px; /* Ajoute de l'espace au-dessus de l'image sur mobile */
+    margin-top: 30px; 
   }
 }
 

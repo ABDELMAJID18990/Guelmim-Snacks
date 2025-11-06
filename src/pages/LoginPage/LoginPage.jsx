@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
-
+import SimpleHeader from '../../components/layout/SimpleHeader/SimpleHeader'; 
 import Input from '../../components/ui/Input/Input';
 import styles from './LoginPage.module.css';
 import { FiMail, FiLock, FiLogIn } from 'react-icons/fi';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import illustration from '../../assets/images/login-illustration.jpg'; 
-import logo from '../../assets/logos/guelmim-snacks-logo.png';
+
 
 
 function LoginPage() {
@@ -20,20 +20,16 @@ function LoginPage() {
   };
 
   return (
-    <div className={styles.page}>
-      {/* --- Colonne de Gauche : Illustration --- */}
-      <div className={styles.illustrationSide}>
-        <img src={illustration} alt="Illustration de commande de nourriture" />
-      </div>
-
-      {/* --- Colonne de Droite : Formulaire --- */}
-      <div className={styles.formSide}>
-        <div className={styles.formContainer}>
-          <Link to="/" className={styles.backToHome}>
-             <img src={logo} alt="Logo" className={styles.logo} /> 
-          </Link>
-          
-          <h1>Bon retour parmi nous !</h1>
+     <div className={styles.pageWrapper}> {/* On ajoute un conteneur global */}
+      <SimpleHeader />
+      <div className={styles.content}>
+        <div className={styles.illustrationSide}>
+          <img src={illustration} alt="Illustration de commande de nourriture" />
+        </div>
+        <div className={styles.formSide}>
+          <div className={styles.formContainer}>
+            {/* 3. SUPPRIMEZ L'ANCIEN LOGO ICI */}
+            <h1>Bon retour parmi nous !</h1>
           
           <form onSubmit={handleSubmit}>
             <div className={styles.formGroup}>
@@ -79,9 +75,11 @@ function LoginPage() {
           <div className={styles.signUpLink}>
             <p>Vous n'avez pas de compte ? <Link to="/register">S'inscrire</Link></p>
           </div>
+          </div>
         </div>
       </div>
     </div>
+    
   );
 }
 

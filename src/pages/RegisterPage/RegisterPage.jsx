@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 
 // Importations des composants et icônes
 import Input from '../../components/ui/Input/Input';
-import styles from './RegisterPage.module.css'; // On utilise un nouveau fichier CSS, mais il sera presque identique
+import styles from './RegisterPage.module.css'; 
 import { FiUser, FiMail, FiLock, FiLogIn } from 'react-icons/fi';
-import illustration from '../../assets/images/login-illustration.jpg'; // On réutilise la même belle illustration !
-import logo from '../../assets/logos/guelmim-snacks-logo.png'; // Adaptez le chemin vers votre logo
+import illustration from '../../assets/images/login-illustration.jpg'; 
+import SimpleHeader from '../../components/layout/SimpleHeader/SimpleHeader';
+
 
 function RegisterPage() {
   // On ajoute les états pour les nouveaux champs
@@ -26,19 +27,17 @@ function RegisterPage() {
   };
 
   return (
-    <div className={styles.page}>
-      {/* --- Colonne de Gauche : Illustration (On garde la même) --- */}
-      <div className={styles.illustrationSide}>
+    <div className={styles.pageWrapper}> 
+      <SimpleHeader />
+      <div className={styles.content}>
+
+        <div className={styles.illustrationSide}>
         <img src={illustration} alt="Illustration de commande de nourriture" />
       </div>
 
       {/* --- Colonne de Droite : Formulaire d'Inscription --- */}
       <div className={styles.formSide}>
-        <div className={styles.formContainer}>
-          <a href="/" className={styles.backToHome}>
-             <img src={logo} alt="Logo" className={styles.logo} /> 
-          </a>
-          
+        <div className={styles.formContainer}>          
           <h1>Créer un compte</h1>
           <p className={styles.subtitle}>Rejoignez-nous et commandez en quelques clics !</p>
           
@@ -92,6 +91,9 @@ function RegisterPage() {
           <div className={styles.loginLink}>
             <p>Vous avez déjà un compte ? <Link to="/login">Se connecter</Link></p>
           </div>
+
+      </div>
+      
         </div>
       </div>
     </div>

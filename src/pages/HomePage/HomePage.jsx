@@ -16,8 +16,6 @@ function HomePage() {
   return (
     <div className={styles.homePageContainer}>
     
-      {/* --- En-tête de la Page --- */}
-      <Navbar />
 
     
       <main>
@@ -28,8 +26,6 @@ function HomePage() {
         <BecomePartnerSection />
       </main>
 
-      
-      <Footer />
       
     </div>
   );
