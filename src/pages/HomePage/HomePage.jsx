@@ -7,8 +7,10 @@ import HowItWorksSection from '../../components/sections/HowItWorksSection/HowIt
 import BecomePartnerSection from '../../components/sections/BecomePartnerSection/BecomePartnerSection';
 import Footer from '../../components/layout/Footer/Footer';
 
+
 // Importation du style spécifique à la page
 import styles from './HomePage.module.css';
+import CartPage from '../CartPage/CartPage';
 
 function HomePage() {
   return (

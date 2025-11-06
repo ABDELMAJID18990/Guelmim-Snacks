@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './BecomePartnerSection.module.css';
+import { Link } from 'react-router-dom';
 
 function BecomePartnerSection() {
   return (
@@ -11,9 +12,9 @@ function BecomePartnerSection() {
             Rejoignez Guelmim Snacks pour augmenter votre visibilité, recevoir plus de commandes à emporter et optimiser votre service. L'inscription est simple et rapide.
           </p>
         </div>
-        <a href="/register-partner" className={styles.ctaButton}>
+        <Link to="/register-partner" className={styles.ctaButton}>
           Devenir Partenaire
-        </a>
+        </Link>
       </div>
     </section>
   );

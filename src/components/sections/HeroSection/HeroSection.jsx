@@ -1,6 +1,8 @@
 import React from 'react';
 import styles from './HeroSection.module.css';
 import burgerImage from '../../../assets/hero-burger.png';
+import { Link } from 'react-router-dom'; 
+
 
 export default function HeroSection() {
   return (
@@ -13,9 +15,9 @@ export default function HeroSection() {
         <p className={styles.heroParagraph}>
           Commandez en avance et récupérez votre repas chaud et frais sans aucune attente. Simple, rapide et délicieux.
         </p>
-        <button className={styles.ctaButton}>
+        <Link to="/snacks" className={styles.ctaButton}>
           Voir les Snacks
-        </button>
+        </Link>
       </div>
       {/* --- Colonne de Droite : Image --- */}
       <div className={styles.imageContainer}>
