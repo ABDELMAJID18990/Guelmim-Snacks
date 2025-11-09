@@ -12,7 +12,7 @@ function BecomePartnerSection() {
             Rejoignez Guelmim Snacks pour augmenter votre visibilité, recevoir plus de commandes à emporter et optimiser votre service. L'inscription est simple et rapide.
           </p>
         </div>
-        <Link to="/register-partner" className={styles.ctaButton}>
+        <Link to="/devenir-partenaire" className={styles.ctaButton}>
           Devenir Partenaire
         </Link>
       </div>

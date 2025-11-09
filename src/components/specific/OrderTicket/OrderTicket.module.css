@@ -17,7 +17,7 @@
   width: 100%; padding: 10px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: transform 0.2s;
 }
 .button:hover { transform: scale(1.03); }
-.decline { background: transparent; border: 2px solid #ddd; color: #888; }
-.accept { background-color: #28a745; color: white; }
+.decline { background: transparent; border: 3px solid #ef0d0d; color: #e51313; }
+.accept { background-color: #158a30; color: white; }
 .ready { background-color: #007bff; color: white; }
 .collected { background-color: #f0f0f0; color: #888; border: 2px solid #f0f0f0; }

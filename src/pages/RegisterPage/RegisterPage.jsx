@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 
 // Importations des composants et icônes
 import Input from '../../components/ui/Input/Input';
@@ -9,8 +9,9 @@ import illustration from '../../assets/images/login-illustration.jpg';
 import SimpleHeader from '../../components/layout/SimpleHeader/SimpleHeader';
 
 
-function RegisterPage() {
-  // On ajoute les états pour les nouveaux champs
+function RegisterPage({onLogin}) {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -22,7 +23,16 @@ function RegisterPage() {
       alert("Les mots de passe ne correspondent pas !");
       return;
     }
-    console.log("Registration attempt:", { name, email, password });
+    const mockClientUser = {
+      name: name,
+      email: email,
+      role: 'customer' // Rôle très important
+    };
+
+    onLogin(mockClientUser);
+
+    alert(`Bienvenue, ${name} ! Votre compte a été créé.`);
+    navigate('/');
     // Ici, plus tard, vous appellerez votre API Laravel pour créer un nouvel utilisateur
   };
 

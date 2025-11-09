@@ -1,5 +1,3 @@
-// src/pages/DishPage/DishPage.jsx
-
 import React, { useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import styles from './DishPage.module.css';
@@ -14,13 +12,11 @@ import DishCard from '../../components/specific/DishCard/DishCard';
 // On va utiliser le Context pour récupérer onAddToCart, c'est plus propre !
 // import { CartContext } from '../../context/CartContext'; 
 
-function DishPage() {
+function DishPage({ onAddToCart }) {
   const { dishId } = useParams(); // Récupère l'ID depuis l'URL
   const [quantity, setQuantity] = useState(1);
   
-  // Plus tard, on récupérera cette fonction via le contexte
-  // const { onAddToCart } = useContext(CartContext); 
-  const onAddToCart = (item, qty) => console.log(`Ajout de ${qty} x ${item.name}`);
+
 
   const dish = mockDishes.find(d => d.id === parseInt(dishId));
 

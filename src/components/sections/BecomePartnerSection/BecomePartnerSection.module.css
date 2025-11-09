@@ -28,11 +28,11 @@
 .ctaButton {
   background: transparent;
   /* COULEUR SOMBRE */
-  color: #2F3640;
-  border: 2px solid #2F3640;
+  color: #ff6347;
+  border: 3px solid #ff6347;
 
   padding: 12px 30px;
-  border-radius: 8px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
@@ -44,6 +44,7 @@
 
 .ctaButton:hover {
   /* INVERSION AU SURVOL */
-  background: #2F3640;
+  background: #ff6347;
+  border-color: #ff6347;
   color: #FFFFFF;
 }

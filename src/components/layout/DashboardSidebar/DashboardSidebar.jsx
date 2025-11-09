@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom'; // On importe NavLink et Link
+import { NavLink, Link, useNavigate } from 'react-router-dom'; // On importe NavLink et Link
 
 // Importation des icônes
 import { FiGrid, FiList, FiUser, FiLogOut } from 'react-icons/fi';
@@ -9,6 +9,14 @@ import styles from './DashboardSidebar.module.css';
 import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // Utilisez une version adaptée (blanche ou sombre)
 
 function DashboardSidebar() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('user'); // On supprime la session de l'utilisateur
+    alert("Vous avez été déconnecté.");
+    navigate('/login'); // On le renvoie à la page de connexion
+  };
+
   return (
     <aside className={styles.sidebar}>
       {/* --- Section du Haut : Logo --- */}
@@ -58,7 +66,7 @@ function DashboardSidebar() {
             </NavLink>
           </li>
           <li>
-            <button className={`${styles.navLink} ${styles.logoutButton}`}>
+            <button onClick={handleLogout} className={`${styles.navLink} ${styles.logoutButton}`}>
               <FiLogOut className={styles.icon} />
               <span>Déconnexion</span>
             </button>

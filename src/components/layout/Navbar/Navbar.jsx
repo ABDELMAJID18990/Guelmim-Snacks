@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // <-- Assurez-vous que ce chemin est correct !
 
-function Navbar() {
+function Navbar({user, onLogout, cartItemCount}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menu, setMenu] = useState("accueil");
 
@@ -33,16 +33,38 @@ function Navbar() {
             <FiSearch />
           </button>
 
-          <div className={styles.cartWrapper}>
+          <Link to="/cart" className={styles.cartWrapper}>
             <button className={styles.iconButton} aria-label="Panier">
               <FiShoppingCart />
             </button>
-            <span className={styles.cartNotification}></span>
-          </div>
-          
-          <Link to="/login" className={styles.outlineButton}>
-            Sign In
+            
+            {/* 2. AFFICHAGE CONDITIONNEL DE LA NOTIFICATION */}
+            {cartItemCount > 0 && (
+              <span className={styles.cartNotification}>{cartItemCount}</span>
+            )}
+
           </Link>
+          
+          {/* 2. LA MODIFICATION PRINCIPALE : L'AFFICHAGE CONDITIONNEL */}
+          {user ? (
+            // Si un utilisateur EST connecté
+            <>
+              {/* On affiche un lien vers le compte ou un simple bonjour */}
+              <span className={styles.welcomeMessage}>
+                Bonjour, {user.name || user.email}
+              </span>
+              
+              {/* Le bouton de déconnexion appelle la fonction onLogout */}
+              <button onClick={onLogout} className={styles.logoutButton}>
+                Déconnexion
+              </button>
+            </>
+          ) : (
+            // Si personne N'EST connecté
+            <Link to="/login" className={styles.outlineButton}>
+              Sign In
+            </Link>
+          )}
         </div>
       </nav>
 
@@ -61,7 +83,18 @@ function Navbar() {
             <li><Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
             <li><Link to="/snacks" onClick={() => setMenuOpen(false)}>Snacks</Link></li>
             <li><Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link></li>
-            <li><Link to="/login" className={styles.actionButtonMobile}>Register/Login</Link></li>
+            <li>
+             {user ? (
+                <button onClick={() => { onLogout(); setMenuOpen(false); }} className={styles.actionButtonMobile}>
+                  Déconnexion
+                </button>
+              ) : (
+                <Link to="/login" className={styles.actionButtonMobile} onClick={() => setMenuOpen(false)}>
+                  Register/Login
+                </Link>
+              )}
+            </li>
+             
           </ul>
         </div>
       )}

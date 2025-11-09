@@ -1,11 +1,8 @@
-import React from 'react';
-import Navbar from '../../components/layout/Navbar/Navbar';
 import HeroSection from '../../components/sections/HeroSection/HeroSection';
 import CategoriesSection from '../../components/sections/CategoriesSection/CategoriesSection';
 import SnacksSection from '../../components/sections/SnacksSection/SnacksSection';
 import HowItWorksSection from '../../components/sections/HowItWorksSection/HowItWorksSection';
 import BecomePartnerSection from '../../components/sections/BecomePartnerSection/BecomePartnerSection';
-import Footer from '../../components/layout/Footer/Footer';
 
 
 // Importation du style spécifique à la page
@@ -21,8 +18,8 @@ function HomePage() {
       <main>
         <HeroSection /> 
         <HowItWorksSection /> 
-        <CategoriesSection />
         <SnacksSection />
+        <CategoriesSection />
         <BecomePartnerSection />
       </main>
 

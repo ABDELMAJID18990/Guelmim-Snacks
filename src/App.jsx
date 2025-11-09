@@ -1,16 +1,7 @@
 import AppRouter from './router/AppRouter';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Navbar from './components/layout/Navbar/Navbar';
-import HeroSection from './components/sections/HeroSection/HeroSection';
-import HomePage from './pages/HomePage/HomePage';
-import SnackPage from './pages/SnackPage/SnackPage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import RegisterPage from './pages/RegisterPage/RegisterPage';
-import CartPage from './pages/CartPage/CartPage';
-import DashboardOrdersPage from './pages/Dashboard/DashboardOrdersPage/DashboardOrdersPage';
-import DashboardMenuPage from './pages/Dashboard/DashboardMenuPage/DashboardMenuPage';
-import Footer from './components/layout/Footer/Footer';
+
 
 const initialCartItems = [
   { id: 2, name: "Tacos Poulet Spécial", price: 35.00, quantity: 2, imageUrl: "..." },
@@ -20,21 +11,73 @@ const initialCartItems = [
 
 function App() {
     const [cartItems, setCartItems] = useState(initialCartItems);
+    const [user, setUser] = useState(null);
 
-  // Fonction pour ajouter un article (à passer à SnackPage)
-  const handleAddToCart = (itemToAdd) => {
-    console.log("Ajout au panier :", itemToAdd);
+
+    useEffect(() => {
+    // On vérifie si un utilisateur est déjà "connecté" dans le localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
+  const handleLogin = (userData) => {
+    const storedUser = localStorage.getItem('user');
+    const existingUser = storedUser ? JSON.parse(storedUser) : {};
+    
+    // 2. On fusionne les données existantes avec les nouvelles (userData)
+    const mergedUserData = { ...existingUser, ...userData };
+    
+    // 3. On sauvegarde le résultat final et on met à jour l'état
+    localStorage.setItem('user', JSON.stringify(mergedUserData));
+    setUser(mergedUserData);
   };
-  const handleQuantityChange = (itemId, newQuantity) => {
-    setCartItems(cartItems.map(item => 
-      item.id === itemId ? { ...item, quantity: newQuantity } : item
-    ));
+
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    setUser(null);
   };
-  const handleRemoveItem = (itemId) => {
+
+  const handleAddToCart = (itemToAdd, quantity) => {
+    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
+    
+     if (existingItem) {
+      // Si l'article existe déjà, on augmente juste sa quantité
+      handleUpdateQuantity(itemToAdd.id, existingItem.quantity + quantity);
+    } else {
+      // Sinon, on ajoute le nouvel article avec sa quantité
+      setCartItems([...cartItems, { ...itemToAdd, quantity }]);
+    }
+    
+    // On peut afficher une petite alerte pour le feedback
+    alert(`${quantity} x ${itemToAdd.name} a été ajouté au panier !`);
+
+  };
+
+  const handleUpdateQuantity = (itemId, newQuantity) => {
+     if (newQuantity < 1) {
+      // Si la quantité tombe à 0, on supprime l'article
+      handleRemoveFromCart(itemId);
+    } else {
+      setCartItems(cartItems.map(item =>
+        item.id === itemId ? { ...item, quantity: newQuantity } : item
+      ));
+    }
+  };
+  const handleRemoveFromCart = (itemId) => {
     setCartItems(cartItems.filter(item => item.id !== itemId));
   };
 
-    return <AppRouter />;
+    return <AppRouter
+          user={user} 
+          onLogin={handleLogin}
+          onLogout={handleLogout}
+          cartItems={cartItems}
+          onAddToCart={handleAddToCart}
+          onUpdateQuantity={handleUpdateQuantity}
+          onRemoveFromCart={handleRemoveFromCart}
+       />;
 }
 
 export default App;

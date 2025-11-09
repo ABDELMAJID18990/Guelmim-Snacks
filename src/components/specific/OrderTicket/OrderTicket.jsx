@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './OrderTicket.module.css';
 
-function OrderTicket({ order }) {
+function OrderTicket({ order, onAccept, onReady, onCollect, onDecline }) {
   // Valeurs par défaut pour éviter les erreurs
   const { 
     id = '#0000', 
@@ -39,15 +39,15 @@ function OrderTicket({ order }) {
       <div className={styles.actions}>
         {status === 'new' && (
           <>
-            <button className={`${styles.button} ${styles.decline}`}>Refuser</button>
-            <button className={`${styles.button} ${styles.accept}`}>Accepter</button>
+            <button className={`${styles.button} ${styles.decline}`} onClick={() => onDecline(id)}>Refuser</button>
+            <button className={`${styles.button} ${styles.accept}`} onClick={() => onAccept(id)}>Accepter</button>
           </>
         )}
         {status === 'preparing' && (
-          <button className={`${styles.button} ${styles.ready}`}>Commande Prête</button>
+          <button className={`${styles.button} ${styles.ready}`}  onClick={() => onReady(id)}>Commande Prête</button>
         )}
         {status === 'ready' && (
-          <button className={`${styles.button} ${styles.collected}`}>Récupérée</button>
+          <button className={`${styles.button} ${styles.collected}`} onClick={() => onCollect(id)}>Récupérée</button>
         )}
       </div>
     </div>

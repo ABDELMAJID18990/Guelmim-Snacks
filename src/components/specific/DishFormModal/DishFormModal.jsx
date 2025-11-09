@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styles from './DishFormModal.module.css';
 import { FiX, FiUpload } from 'react-icons/fi';
 
-function DishFormModal({ isOpen, onClose, dishToEdit }) {
+function DishFormModal({ isOpen, onClose, dishToEdit, onSave }) {
   // Un état pour chaque champ du formulaire
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -35,10 +35,18 @@ function DishFormModal({ isOpen, onClose, dishToEdit }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = { name, description, category, price, image };
-    console.log("Données soumises :", formData);
+    const formData = { 
+      id: dishToEdit ? dishToEdit.id : null, // Important pour le mode EDITER
+      name, 
+      description, 
+      category, 
+      price: parseFloat(price), 
+      image 
+     };
+    onSave(formData);
+    onClose();
     // Ici, vous enverriez les données à l'API Laravel
-    onClose(); // On ferme la modale après soumission
+     
   };
   
   const handleImageChange = (e) => {

@@ -120,3 +120,50 @@
     backdrop-filter: blur(5px);
   }
 }
+
+/* --- NOUVEAUX STYLES DE BOUTONS PAR RÔLE --- */
+
+.roleActionButtons {
+  display: flex;
+  flex-direction: column; /* Les boutons sont empilés pour une meilleure clarté */
+  gap: 12px;
+  margin-top: 24px; /* Un peu d'espace avec les champs de formulaire */
+}
+
+.actionButton {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Bouton PRINCIPAL (Gérant - Priorité d'action) */
+.primaryButton {
+  background-color: #FF6347; /* Votre couleur principale */
+  color: white;
+  border: 2px solid #FF6347;
+}
+.primaryButton:hover {
+  background-color: #e55c42; /* Un peu plus sombre */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 99, 71, 0.2);
+}
+
+/* Bouton SECONDAIRE (Client - Action alternative) */
+.secondaryButton {
+  background-color: transparent;
+  color: #555;
+  border: 2px solid #ddd;
+}
+.secondaryButton:hover {
+  background-color: #f8f8f8;
+  color: #2F3640;
+  border-color: #bbb;
+}

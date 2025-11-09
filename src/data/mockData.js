@@ -59,3 +59,65 @@ export const mockSnacks = [
     imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c'
   }
 ];
+
+export const mockOrders = [
+
+  { 
+    id: '#1024', 
+    customerName: 'Ali Alaoui', 
+    time: '19:32', 
+    status: 'new', 
+    items: [
+      { quantity: 2, name: 'Tacos Poulet', instructions: 'Sans oignons, sauce algérienne' },
+      { quantity: 1, name: 'Fanta Orange' },
+    ] 
+  },
+  { 
+    id: '#1025', 
+    customerName: 'Khadija M.', 
+    time: '19:34', 
+    status: 'new', 
+    items: [
+      { quantity: 1, name: 'Pizza Margherita' },
+    ] 
+  },
+  
+  // Colonne "En Préparation"
+  { 
+    id: '#1023', 
+    customerName: 'Fatima Z.', 
+    time: '19:28', 
+    status: 'preparing', 
+    items: [
+      { quantity: 1, name: 'Pizza Regina' },
+      { quantity: 1, name: 'Salade César' },
+    ] 
+  },
+  { 
+    id: '#1021', 
+    customerName: 'Amina S.', 
+    time: '19:25', 
+    status: 'preparing', 
+    items: [
+      { quantity: 1, name: 'Pizza 4 Fromages' },
+    ] 
+  },
+
+  // Colonne "Prêtes"
+  { 
+    id: '#1022', 
+    customerName: 'Youssef K.', 
+    time: '19:15', 
+    status: 'ready', 
+    items: [
+      { quantity: 1, name: 'Burger \'Sahara\'' },
+      { quantity: 1, name: 'Coca-Cola' },
+    ] 
+  },
+];
+
+export const mockMenu = [
+  { id: 1, name: 'Pizza Regina', imageUrl: 'https://images.unsplash.com/photo-1594007654729-407eedc4be65', category: 'Pizza', price: 50.00, is_available: true },
+  { id: 2, name: 'Tacos Poulet Gratiné', imageUrl: 'https://images.unsplash.com/photo-1562086181-4494c643194a', category: 'Tacos', price: 35.00, is_available: true },
+  { id: 3, name: 'Burger \'Sahara\'', imageUrl: 'https://images.unsplash.com/photo-1571091718767-18b5b1457add', category: 'Burgers', price: 45.00, is_available: false },
+];
