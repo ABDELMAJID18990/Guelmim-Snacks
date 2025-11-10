@@ -1,0 +1,109 @@
+/* --- Variables Locales (optionnel, mais bonne pratique) --- */
+:root {
+  --primary-color: #ff6347; /* La couleur de votre bouton */
+  --text-dark: #2F3640;     /* Votre couleur de texte principale */
+  --text-light: #555;      /* Votre couleur de texte secondaire */
+}
+
+/* --- Conteneur Principal de la Section --- */
+.heroSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px; /* Espace entre le texte et l'image */
+  padding: 20px 6vw; /* 80px en haut/bas, 6% de la largeur de l'écran sur les côtés */
+  background-color: #f8f9fa; /* Fond très légèrement grisé */
+  min-height: 85vh; /* Hauteur minimale pour prendre de la place */
+}
+
+/* --- Colonne de Gauche --- */
+.textContainer {
+  flex: 1; /* Prend 1 part de l'espace disponible */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Aligne tout le contenu à gauche */
+  gap: 24px; /* Espace vertical entre le titre, le paragraphe et le bouton */
+}
+
+.heroHeadline {
+  font-size: clamp(2.5rem, 5vw, 4rem); /* Taille de police responsive ! */
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.heroParagraph {
+  font-size: 1.1rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  max-width: 500px; /* Empêche le texte de devenir trop large */
+  margin: 0;
+}
+
+.ctaButton {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 14px 32px; /* Bouton généreux */
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ctaButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 99, 71, 0.2);
+}
+
+/* --- Colonne de Droite --- */
+.imageContainer {
+  flex: 1; /* Prend 1 part de l'espace disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heroImage {
+  max-width: 100%;
+  height: auto;
+  /* Effet de "flottement" subtil */
+  filter: drop-shadow(0px 20px 40px rgba(0, 0, 0, 0.1)); 
+  animation: float 6s ease-in-out infinite;
+}
+
+/* --- Responsive pour Tablettes et Mobiles --- */
+@media (max-width: 992px) {
+  .heroSection {
+    flex-direction: column; /* Empile le texte et l'image verticalement */
+    text-align: center; /* Centre le texte */
+    padding: 60px 4vw;
+  }
+
+  .textContainer {
+    align-items: center; /* Centre les éléments du bloc texte */
+  }
+
+  .heroHeadline, .heroParagraph {
+    max-width: 600px; /* Limite la largeur du texte centré */
+  }
+
+  .imageContainer {
+    margin-top: 30px; 
+  }
+}
+
+/* --- Animation de Flottement (Bonus) --- */
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+	100% {
+		transform: translateY(0px);
+	}
+}

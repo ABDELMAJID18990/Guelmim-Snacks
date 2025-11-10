@@ -1,0 +1,37 @@
+/* Le style .page n'est plus forcément nécessaire */
+.page {
+  background-color: #f8f9fa; /* On donne une couleur de fond générale à la page */
+}
+
+/* --- Section Menu --- */
+.menuSection {
+  padding: 80px 6vw;
+  /* On enlève la bordure et le margin-top de l'ancienne version */
+}
+
+.menuContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.menuTitle {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #2F3640;
+}
+
+.filterBar {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 60px; /* Plus d'espace avant la grille */
+}
+
+.dishesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 32px;
+}

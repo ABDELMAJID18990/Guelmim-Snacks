@@ -1,0 +1,109 @@
+/* --- Variables pour le Footer --- */
+:root {
+  --footer-bg: #2F3640; /* Votre Gris Ardoise */
+  --footer-text-color: #A9A9A9; /* Un gris clair lisible */
+  --footer-title-color: #FFFFFF;
+  --footer-link-hover: #FF6347; /* Votre couleur primaire */
+}
+
+/* --- Style du Conteneur Principal --- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text-color);
+  padding-top: 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap; /* Permet aux colonnes de passer à la ligne sur mobile */
+  gap: 40px; /* Espace entre les colonnes */
+}
+
+/* --- Style des Colonnes --- */
+.column {
+  flex: 1; /* Chaque colonne essaie de prendre une part égale de l'espace */
+  min-width: 200px; /* Largeur minimale avant de passer à la ligne */
+}
+
+.logo {
+  max-width: 150px;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 280px;
+}
+
+.columnTitle {
+  color: var(--footer-title-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  /* Petite ligne décorative sous le titre */
+  padding-bottom: 10px;
+}
+.columnTitle::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--footer-link-hover);
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkList li {
+  margin-bottom: 12px;
+}
+
+.linkList a, .linkList span {
+  text-decoration: none;
+  color: var(--footer-text-color);
+  transition: color 0.2s ease;
+}
+
+.linkList a:hover {
+  color: var(--footer-link-hover);
+}
+
+/* --- Icônes Sociales --- */
+.socialIcons {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.socialIcons a {
+  color: var(--footer-text-color);
+  font-size: 1.2rem;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.socialIcons a:hover {
+  color: var(--footer-link-hover);
+  transform: scale(1.2);
+}
+
+/* --- Barre de Copyright --- */
+.copyrightBar {
+  text-align: center;
+  padding: 24px 20px;
+  margin-top: 40px;
+  border-top: 1px solid #444; /* Séparateur */
+  font-size: 0.85rem;
+}
+.copyrightBar p {
+  margin: 0;
+}

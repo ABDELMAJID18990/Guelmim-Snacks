@@ -1,0 +1,50 @@
+.section {
+  padding: 60px 6vw;
+  /* FOND CLAIR, C'EST LE GRAND CHANGEMENT */
+  background-color: #f8f9fa; 
+  text-align: center; /* On peut tout centrer pour un look différent */
+}
+
+.container {
+  max-width: 800px; /* On réduit la largeur pour un look plus focalisé */
+  margin: 0 auto;
+}
+
+.title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 16px;
+  /* COULEUR DE TEXTE SOMBRE */
+  color: #2F3640; 
+}
+
+.description {
+  font-size: 1.2rem;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 32px;
+}
+
+.ctaButton {
+  background: transparent;
+  /* COULEUR SOMBRE */
+  color: #ff6347;
+  border: 3px solid #ff6347;
+
+  padding: 12px 30px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.ctaButton:hover {
+  /* INVERSION AU SURVOL */
+  background: #ff6347;
+  border-color: #ff6347;
+  color: #FFFFFF;
+}

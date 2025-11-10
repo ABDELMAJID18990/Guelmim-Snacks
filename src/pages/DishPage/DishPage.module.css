@@ -1,0 +1,22 @@
+.page { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
+
+/* Section Principale */
+.detailsSection { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.imageContainer img { width: 100%; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+.infoContainer h1 { font-size: 3.5rem; margin: 0; }
+.snackLink { color: var(--primary-color); text-decoration: none; font-weight: 500; display: block; margin-bottom: 20px; }
+.description { font-size: 1.1rem; color: #555; line-height: 1.6; }
+.price { font-size: 2.5rem; font-weight: bold; margin: 20px 0; display: block; }
+
+.actions { display: flex; align-items: center; gap: 16px; }
+.quantitySelector { display: flex; align-items: center; border: 1px solid #ddd; border-radius: 8px; }
+.quantitySelector button { background: none; border: none; padding: 12px; font-size: 1rem; cursor: pointer; }
+.quantitySelector input { border: none; width: 40px; text-align: center; font-size: 1.2rem; font-weight: bold; }
+
+.addToCartButton { background-color: var(--primary-color); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; }
+.favoriteButton { background-color: #f0f0f0; border: none; font-size: 1.2rem; padding: 14px; border-radius: 8px; cursor: pointer; }
+
+/* Section Autres Plats */
+.relatedSection { margin-top: 100px; }
+.relatedSection h2 { font-size: 2rem; margin-bottom: 30px; }
+.relatedGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
