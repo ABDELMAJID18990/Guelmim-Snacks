@@ -1,12 +1,14 @@
-// src/pages/CartPage/CartPage.jsx (Version finale)
-
-import React from 'react'; // Il manquait l'import de React
 import styles from './CartPage.module.css';
 import { FiPlus, FiMinus, FiTrash2 } from 'react-icons/fi';
 import { Link } from 'react-router-dom'; // Import de Link pour le panier vide
 
-// La page reçoit directement les données et fonctions du 'cerveau' (App.jsx)
-function CartPage({ cartItems, onUpdateQuantity, onRemoveFromCart }) {
+import { removeItem, updateQuantity } from '../../store/cartActions';
+import { useSelector, useDispatch } from 'react-redux';
+
+function CartPage() {
+
+  const cartItems = useSelector(state => state.cart);
+  const dispatch = useDispatch();
 
   // Si le tableau des articles du panier est vide, on affiche un message spécial
   if (!cartItems || cartItems.length === 0) {
@@ -37,16 +39,15 @@ function CartPage({ cartItems, onUpdateQuantity, onRemoveFromCart }) {
                 <span>{item.price.toFixed(2)} DH</span>
               </div>
               <div className={styles.itemQuantity}>
-                {/* On appelle directement la fonction reçue en props */}
-                <button onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}><FiMinus /></button>
+                <button onClick={() => dispatch(updateQuantity({ id: item.id, newQuantity: item.quantity - 1 }))}><FiMinus /></button>
                 <input type="text" value={item.quantity} readOnly />
-                <button onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}><FiPlus /></button>
+                <button onClick={() => dispatch(updateQuantity(item.id, item.quantity + 1))}><FiPlus /></button>
               </div>
               <div className={styles.itemTotal}>
                 {(item.price * item.quantity).toFixed(2)} DH
               </div>
               {/* On appelle directement la fonction reçue en props */}
-              <button onClick={() => onRemoveFromCart(item.id)} className={styles.removeItem}>
+              <button onClick={() => dispatch(removeItem(item.id))} className={styles.removeItem}>
                 <FiTrash2 />
               </button>
             </div>

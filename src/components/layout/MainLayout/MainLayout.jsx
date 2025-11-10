@@ -1,20 +1,21 @@
 import { Outlet } from 'react-router-dom'; // <-- Très important !
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer/Footer';
+import { useSelector } from 'react-redux';
 
-function MainLayout({ user, onLogout, cartItems, onAddToCart }) {
-  // On récupère le nombre d'articles du panier depuis un contexte plus tard
-  const cartItemCount = 0; 
-
+function MainLayout({ user, onLogout}) {
+    const cartItems = useSelector(state => state.cart);
+    const cartItemCount = cartItems ? 
+    cartItems.reduce((total, item) => total + item.quantity, 0)
+    : 0;
   return (
-    <div className="app-container"> {/* Vous pouvez réutiliser votre CSS existant */}
+    <div className="app-container"> 
       <Navbar 
-      cartItemCount={cartItems.reduce((total, item) => total + item.quantity, 0)}
+      cartItemCount={cartItemCount}
        user={user} 
        onLogout={onLogout} />
       <main className="main-content">
-         {/* C'est une façon de transmettre des props aux enfants d'un layout */}
-        <Outlet context={{ onAddToCart: onAddToCart }} /> {/* <-- La page (HomePage, SnackPage...) s'affichera ici */}
+        <Outlet /> {/* <-- La page (HomePage, SnackPage...) s'affichera ici */}
       </main>
       <Footer />
     </div>

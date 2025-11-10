@@ -10,7 +10,6 @@ const initialCartItems = [
 
 
 function App() {
-    const [cartItems, setCartItems] = useState(initialCartItems);
     const [user, setUser] = useState(null);
 
 
@@ -39,44 +38,14 @@ function App() {
     setUser(null);
   };
 
-  const handleAddToCart = (itemToAdd, quantity) => {
-    const existingItem = cartItems.find(item => item.id === itemToAdd.id);
-    
-     if (existingItem) {
-      // Si l'article existe déjà, on augmente juste sa quantité
-      handleUpdateQuantity(itemToAdd.id, existingItem.quantity + quantity);
-    } else {
-      // Sinon, on ajoute le nouvel article avec sa quantité
-      setCartItems([...cartItems, { ...itemToAdd, quantity }]);
-    }
-    
-    // On peut afficher une petite alerte pour le feedback
-    alert(`${quantity} x ${itemToAdd.name} a été ajouté au panier !`);
+  
 
-  };
-
-  const handleUpdateQuantity = (itemId, newQuantity) => {
-     if (newQuantity < 1) {
-      // Si la quantité tombe à 0, on supprime l'article
-      handleRemoveFromCart(itemId);
-    } else {
-      setCartItems(cartItems.map(item =>
-        item.id === itemId ? { ...item, quantity: newQuantity } : item
-      ));
-    }
-  };
-  const handleRemoveFromCart = (itemId) => {
-    setCartItems(cartItems.filter(item => item.id !== itemId));
-  };
+ 
 
     return <AppRouter
           user={user} 
           onLogin={handleLogin}
           onLogout={handleLogout}
-          cartItems={cartItems}
-          onAddToCart={handleAddToCart}
-          onUpdateQuantity={handleUpdateQuantity}
-          onRemoveFromCart={handleRemoveFromCart}
        />;
 }
 

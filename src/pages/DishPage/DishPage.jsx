@@ -1,5 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { addItem } from '../../store/cartActions';
+
 import styles from './DishPage.module.css';
 
 // Icônes
@@ -9,12 +13,14 @@ import { FiPlus, FiMinus, FiHeart } from 'react-icons/fi';
 import { mockSnackData, mockDishes } from '../../data/mockData';
 import DishCard from '../../components/specific/DishCard/DishCard';
 
-// On va utiliser le Context pour récupérer onAddToCart, c'est plus propre !
-// import { CartContext } from '../../context/CartContext'; 
 
-function DishPage({ onAddToCart }) {
+function DishPage() {
   const { dishId } = useParams(); // Récupère l'ID depuis l'URL
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+
+  
   
 
 
@@ -24,12 +30,9 @@ function DishPage({ onAddToCart }) {
     return <h2>Plat non trouvé !</h2>;
   }
 
-  const handleAddToCart = () => {
-    if (quantity > 0) {
-      onAddToCart(dish, quantity);
-    }
-  };
-
+const handleAddToCart = () => {
+    dispatch(addItem({ ...dish, quantity })); // <-- Appel au créateur d'action
+};
   const otherDishes = mockDishes.filter(d => d.id !== dish.id).slice(0, 3); // Affiche 3 autres plats
 
   return (
@@ -63,7 +66,7 @@ function DishPage({ onAddToCart }) {
         <h2>Autres Plats :</h2>
         <div className={styles.relatedGrid}>
           {otherDishes.map(otherDish => (
-            <DishCard key={otherDish.id} dish={otherDish} onAddToCart={onAddToCart} />
+            <DishCard key={otherDish.id} dish={otherDish}  />
           ))}
         </div>
       </section>

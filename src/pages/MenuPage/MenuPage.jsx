@@ -52,7 +52,7 @@ function MenuPage() {
           <DishCard 
             key={dish.id}
             dish={dish}
-            onAddToCart={onAddToCart} // On passe la fonction au composant enfant
+            
           />
         ))}
       </main>

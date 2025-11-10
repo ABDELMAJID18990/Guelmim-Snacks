@@ -4,7 +4,12 @@ import { FiClock, FiHeart, FiPlus } from 'react-icons/fi';
 import styles from './DishCard.module.css';
 import placeholderImage from '../../../assets/images/dish-placeholder.png';
 
-function DishCard({ dish = {}, onAddToCart }) {
+import { useDispatch } from 'react-redux'; // 
+import { addItem } from '../../../store/cartActions';
+
+function DishCard({ dish = {}}) {
+
+  const dispatch = useDispatch();
 
   // Un SEUL bloc de déstructuration, qui inclut `id` et les valeurs par défaut.
   const { 
@@ -19,7 +24,7 @@ function DishCard({ dish = {}, onAddToCart }) {
   const handleAddToCartClick = (event) => {
     event.preventDefault(); 
     event.stopPropagation();
-    onAddToCart(dish, 1);
+    dispatch(addItem({ ...dish, quantity  :1 }));
   };
 
   return (

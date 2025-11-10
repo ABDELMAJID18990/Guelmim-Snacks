@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 // NOUVEAU : Importation des icônes depuis lLink bibliothèque
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -7,9 +8,12 @@ import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // <-- Assurez-vous que ce chemin est correct !
 
-function Navbar({user, onLogout, cartItemCount}) {
+function Navbar({user, onLogout}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menu, setMenu] = useState("accueil");
+
+  const cartItems = useSelector(state => state.cart);
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
 
 
   return (

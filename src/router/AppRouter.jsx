@@ -22,19 +22,16 @@ import RestaurantSetupPage from '../pages/Dashboard/RestaurantSetupPage/Restaura
 
 // Importations des Gardiens et Gestionnaires d'État
 import ProtectedRoute from './ProtectedRoute';
-import DashboardStateManager from '../components/dashboard/DashboardStateManager'; // Assurez-vous que le chemin est correct
 
 import { mockOrders } from '../data/mockData';
 // La fonction reçoit TOUTES les props du "cerveau" (App.jsx)
 function AppRouter({ 
-    user, onLogin, onLogout, 
-    cartItems, onAddToCart, onUpdateQuantity, onRemoveFromCart 
+    user, onLogin, onLogout
 }) {
 
      const [orders, setOrders] = useState(mockOrders);
     // On crée des objets props pour les passer plus facilement
     const authProps = { onLogin, onLogout };
-    const cartProps = { cartItems, onAddToCart, onUpdateQuantity, onRemoveFromCart };
 
     const updateOrderStatus = (orderId, newStatus) => {
         setOrders(prevOrders => prevOrders.map(order => 
@@ -62,20 +59,19 @@ function AppRouter({
                 <MainLayout 
                     user={user} 
                     onLogout={onLogout} 
-                    cartItems={cartItems} 
-                    onAddToCart={onAddToCart}
+                   
                 />}
             >
                 <Route path='/' element={<HomePage />} />
                 <Route path='/snacks' element={<SnacksPage />} /> 
-                <Route path='/menu' element={<MenuPage onAddToCart={onAddToCart} />} />
+                <Route path='/menu' element={<MenuPage/>} />
 
                 {/* Pages de détail recevant la fonction pour ajouter au panier */}
-                <Route path='/snack/:snackId' element={<SnackPage onAddToCart={onAddToCart} />} />
-                <Route path='/plat/:dishId' element={<DishPage onAddToCart={onAddToCart} />} /> 
+                <Route path='/snack/:snackId' element={<SnackPage  />} />
+                <Route path='/plat/:dishId' element={<DishPage  />} /> 
 
                 {/* Page du panier recevant toutes les données et fonctions du panier */}
-                <Route path="/cart" element={<CartPage {...cartProps} />} />
+                <Route path="/cart" element={<CartPage  />} />
                 
                 <Route path="/devenir-partenaire" element={<BecomePartnerPage />} />
             </Route>
