@@ -24,7 +24,10 @@ import DashboardAccountPage from '../pages/Dashboard/DashboardAccountPage/Dashbo
 // Importations des Gardiens et Gestionnaires d'État
 import ProtectedRoute from './ProtectedRoute';
 
+import ScrollToTop from '../components/utils/ScrollToTop';
+
 import { mockOrders } from '../data/mockData';
+
 function AppRouter({ 
     user, onLogin, onLogout, 
     cartItems, onAddToCart, onUpdateQuantity, onRemoveFromCart 
@@ -52,78 +55,81 @@ function AppRouter({
     // On prépare les props
     const orderHandlers = { handleAcceptOrder, handleReadyOrder, handleCollectOrder, handleDeclineOrder };
 
-    return (
+    return (<>
+    <ScrollToTop />
         <Routes>
-            {/* ------------------------------------------------------------- */}
-            {/* --- I. ROUTES PUBLIQUES (Layout Principal avec Navbar/Footer) --- */}
-            {/* ------------------------------------------------------------- */}
-            <Route element={
-                <MainLayout 
-                    user={user} 
-                    onLogout={onLogout} 
-                    cartItems={cartItems} 
-                    onAddToCart={onAddToCart}
-                />}
-            >
-                <Route path='/' element={<HomePage />} />
-                <Route path='/snacks' element={<SnacksPage />} /> 
-                <Route path='/menu' element={<MenuPage onAddToCart={onAddToCart} />} />
+                {/* ------------------------------------------------------------- */}
+                {/* --- I. ROUTES PUBLIQUES (Layout Principal avec Navbar/Footer) --- */}
+                {/* ------------------------------------------------------------- */}
+                <Route element={
+                    <MainLayout 
+                        user={user} 
+                        onLogout={onLogout} 
+                        cartItems={cartItems} 
+                        onAddToCart={onAddToCart}
+                    />}
+                >
+                    <Route path='/' element={<HomePage />} />
+                    <Route path='/snacks' element={<SnacksPage />} /> 
+                    <Route path='/menu' element={<MenuPage onAddToCart={onAddToCart} />} />
 
-                {/* Pages de détail recevant la fonction pour ajouter au panier */}
-                <Route path='/snack/:snackId' element={<SnackPage onAddToCart={onAddToCart} />} />
-                <Route path='/plat/:dishId' element={<DishPage onAddToCart={onAddToCart} />} /> 
+                    {/* Pages de détail recevant la fonction pour ajouter au panier */}
+                    <Route path='/snack/:snackId' element={<SnackPage onAddToCart={onAddToCart} />} />
+                    <Route path='/plat/:dishId' element={<DishPage onAddToCart={onAddToCart} />} /> 
 
-                {/* Page du panier recevant toutes les données et fonctions du panier */}
-                <Route path="/cart" element={<CartPage {...cartProps} />} />
-                
-                <Route path="/devenir-partenaire" element={<BecomePartnerPage />} />
-            </Route>
-            
-
-            {/* ------------------------------------------------------------------- */}
-            {/* --- II. ROUTES D'AUTHENTIFICATION (Layouts FullScreen, reçoivent onLogin) --- */}
-            {/* ------------------------------------------------------------------- */}
-            {/* Les pages d'authentification sont autonomes et reçoivent onLogin pour la redirection */}
-            <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
-            <Route path="/register" element={<RegisterPage onLogin={onLogin} />} />
-            <Route path="/register-partner" element={<PartnerRegisterPage onLogin={onLogin} />} /> 
-
-
-            {/* ------------------------------------------------------------- */}
-            {/* --- III. ROUTES PROTÉGÉES (Pour les Gérants) --- */}
-            {/* ------------------------------------------------------------- */}
-            <Route element={<ProtectedRoute user={user} />}>
-                
-                {/* Route Setup (sans Layout) */}
-                <Route path="/dashboard/setup" element={<RestaurantSetupPage onLogin={onLogin} />} /> 
-
-                {/* Layout des pages avec Sidebar */}
-                <Route element={<DashboardLayout />}>
-
-                    {/* Route Commandes : reçoit les commandes et les fonctions */}
-                    <Route 
-                        path="/dashboard/orders" 
-                        element={
-                            <DashboardOrdersPage 
-                                orders={orders}
-                                {...orderHandlers}
-                            />
-                        } 
-                    />
-
-                    <Route path="/dashboard/menu" element={<DashboardMenuPage />} />
-                    <Route path="/dashboard/account" element={<DashboardAccountPage />} />
+                    {/* Page du panier recevant toutes les données et fonctions du panier */}
+                    <Route path="/cart" element={<CartPage {...cartProps} />} />
                     
+                    <Route path="/devenir-partenaire" element={<BecomePartnerPage />} />
+                </Route>
+                
+
+                {/* ------------------------------------------------------------------- */}
+                {/* --- II. ROUTES D'AUTHENTIFICATION (Layouts FullScreen, reçoivent onLogin) --- */}
+                {/* ------------------------------------------------------------------- */}
+                {/* Les pages d'authentification sont autonomes et reçoivent onLogin pour la redirection */}
+                <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
+                <Route path="/register" element={<RegisterPage onLogin={onLogin} />} />
+                <Route path="/register-partner" element={<PartnerRegisterPage onLogin={onLogin} />} /> 
+
+
+                {/* ------------------------------------------------------------- */}
+                {/* --- III. ROUTES PROTÉGÉES (Pour les Gérants) --- */}
+                {/* ------------------------------------------------------------- */}
+                <Route element={<ProtectedRoute user={user} />}>
+                    
+                    {/* Route Setup (sans Layout) */}
+                    <Route path="/dashboard/setup" element={<RestaurantSetupPage onLogin={onLogin} />} /> 
+
+                    {/* Layout des pages avec Sidebar */}
+                    <Route element={<DashboardLayout />}>
+
+                        {/* Route Commandes : reçoit les commandes et les fonctions */}
+                        <Route 
+                            path="/dashboard/orders" 
+                            element={
+                                <DashboardOrdersPage 
+                                    orders={orders}
+                                    {...orderHandlers}
+                                />
+                            } 
+                        />
+
+                        <Route path="/dashboard/menu" element={<DashboardMenuPage />} />
+                        <Route path="/dashboard/account" element={<DashboardAccountPage />} />
+
+                    </Route>
+
                 </Route>
 
-            </Route>
+                {/* ------------------------------------------------------------- */}
+                {/* --- IV. ROUTE 404 --- */}
+                {/* ------------------------------------------------------------- */}
+                <Route path="*" element={<h1>Page non trouvée (404)</h1>} />
 
-            {/* ------------------------------------------------------------- */}
-            {/* --- IV. ROUTE 404 --- */}
-            {/* ------------------------------------------------------------- */}
-            <Route path="*" element={<h1>Page non trouvée (404)</h1>} />
-
-        </Routes>
+            </Routes>
+    </>
+        
     );
 }
 
