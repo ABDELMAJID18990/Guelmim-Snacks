@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // NOUVEAU : Importation des icônes depuis lLink bibliothèque
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
@@ -8,9 +8,18 @@ import { Link } from 'react-router-dom';
 import styles from './Navbar.module.css';
 import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // <-- Assurez-vous que ce chemin est correct !
 
-function Navbar({user, onLogout}) {
+import { logout } from '../../../store/authSlice';
+
+function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [menu, setMenu] = useState("accueil");
+
+  const dispatch = useDispatch(); 
+  const { user } = useSelector(state => state.auth);
+
+  const handleLogout = () => {
+    dispatch(logout()); 
+  };
 
   const cartItems = useSelector(state => state.cart);
   const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -49,20 +58,20 @@ function Navbar({user, onLogout}) {
 
           </Link>
           
-          {/* 2. LA MODIFICATION PRINCIPALE : L'AFFICHAGE CONDITIONNEL */}
           {user ? (
-            // Si un utilisateur EST connecté
+            // 
             <>
-            
+              
+              
               {/* Le bouton de déconnexion appelle la fonction onLogout */}
-              <button onClick={onLogout} className={styles.logoutButton}>
+              <button onClick={handleLogout} className={styles.logoutButton}>
                 Déconnexion
               </button>
             </>
           ) : (
             // Si personne N'EST connecté
             <Link to="/login" className={styles.outlineButton}>
-              Sign In
+              Login
             </Link>
           )}
         </div>
@@ -85,12 +94,12 @@ function Navbar({user, onLogout}) {
             <li><Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link></li>
             <li>
              {user ? (
-                <button onClick={() => { onLogout(); setMenuOpen(false); }} className={styles.actionButtonMobile}>
+                <button onClick={() => { handleLogout(); setMenuOpen(false); }} className={styles.actionButtonMobile}>
                   Déconnexion
                 </button>
               ) : (
                 <Link to="/login" className={styles.actionButtonMobile} onClick={() => setMenuOpen(false)}>
-                  Register/Login
+                  Login
                 </Link>
               )}
             </li>

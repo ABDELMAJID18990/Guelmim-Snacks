@@ -7,10 +7,14 @@ import { FiMail, FiLock, FiLogIn } from 'react-icons/fi';
 import { FaGoogle, FaFacebookF } from 'react-icons/fa';
 import illustration from '../../assets/images/login-illustration.jpg'; 
 
+import { useDispatch } from 'react-redux'; 
+import { login } from '../../store/authSlice';
 
 
-function LoginPage({onLogin}) {
+function LoginPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -18,26 +22,24 @@ function LoginPage({onLogin}) {
 
   const handleClientLogin = (event) => {
     event.preventDefault();
-    // Crée un utilisateur client
+
     const mockClientUser = { email: email, role: 'customer' }; 
-    onLogin(mockClientUser);
+    dispatch(login(mockClientUser));
     alert(`Bienvenue, ${email} !`);
-    navigate('/'); // Redirige vers la page d'accueil
+    navigate('/'); 
 };
 
-// Nouvelle fonction : Le gérant n'utilise pas le même formulaire que le client
 const handleManagerLogin = (event) => {
     event.preventDefault();
-    // Simule la vérification et crée un utilisateur gérant
     const mockManagerUser = { 
         email: email, 
         role: 'manager', 
         // Simule que le gérant a déjà terminé la configuration !
         is_setup_complete: true // Clé du succès : on simule qu'il est déjà un gérant configuré
     }; 
-    onLogin(mockManagerUser);
+    dispatch(login(mockManagerUser));
     alert(`Bienvenue dans votre tableau de bord, Gérant !`);
-    navigate('/dashboard/orders'); // Redirige vers le tableau de bord
+    navigate('/dashboard/orders'); 
 };
 
   return (

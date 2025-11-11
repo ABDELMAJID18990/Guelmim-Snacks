@@ -1,10 +1,11 @@
-
-import { configureStore } from '@reduxjs/toolkit'; // On utilise configureStore car c'est le standard
-import  cartReducer  from './cartSlice'; // On importe notre reducer classique
+import { configureStore } from '@reduxjs/toolkit';
+import cartReducer from './cartSlice'; 
+import authReducer from './authSlice'; 
 
 const store = configureStore({
   reducer: {
-    cart: cartReducer, 
+    cart: cartReducer,
+    auth: authReducer, //
   },
 });
 

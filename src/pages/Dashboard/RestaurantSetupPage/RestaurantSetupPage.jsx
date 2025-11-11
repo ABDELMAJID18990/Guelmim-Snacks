@@ -1,16 +1,19 @@
-// src/pages/Dashboard/RestaurantSetupPage/RestaurantSetupPage.jsx (Version Complète et Corrigée)
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './RestaurantSetupPage.module.css';
+
+import { useDispatch } from 'react-redux';
+import { updateUser } from '../../../store/authSlice'
 
 // Importez vos composants d'étapes (assurez-vous que les chemins sont corrects)
 import Step1_Info from './Step1_Info';
 import Step2_Visuals from './Step2_Visuals';
 import Step3_Horaires from './Step3_Horaires';
 
-function RestaurantSetupPage({ onLogin }) {
+function RestaurantSetupPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     description: '',
@@ -48,7 +51,9 @@ function RestaurantSetupPage({ onLogin }) {
 
     // On sauvegarde cette information dans le localStorage
     localStorage.setItem('user', JSON.stringify(mockUser));
-    onLogin({ is_setup_complete: true }); 
+    dispatch(updateUser({ 
+      is_setup_complete: true 
+    })); 
     // On prévient l'utilisateur et on le redirige
     alert("Votre restaurant a été configuré avec succès ! Vous allez être redirigé vers votre tableau de bord.");
     navigate('/dashboard/menu');

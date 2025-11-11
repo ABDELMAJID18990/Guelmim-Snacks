@@ -1,8 +1,9 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 // Ce composant vérifie l'état de l'utilisateur dans le localStorage
-function ProtectedRoute({ user }) {
-  
+function ProtectedRoute() {
+  const { user } = useSelector(state => state.auth); 
   
   const location = useLocation();
 
