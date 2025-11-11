@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate  } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../store/authActions';
+
 // Importations des composants et icônes
 import Input from '../../components/ui/Input/Input';
 import styles from './RegisterPage.module.css'; 
@@ -9,8 +12,9 @@ import illustration from '../../assets/images/login-illustration.jpg';
 import SimpleHeader from '../../components/layout/SimpleHeader/SimpleHeader';
 
 
-function RegisterPage({onLogin}) {
+function RegisterPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -29,7 +33,7 @@ function RegisterPage({onLogin}) {
       role: 'customer' // Rôle très important
     };
 
-    onLogin(mockClientUser);
+    dispatch(loginSuccess(mockClientUser));
 
     alert(`Bienvenue, ${name} ! Votre compte a été créé.`);
     navigate('/');

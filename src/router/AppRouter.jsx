@@ -24,14 +24,11 @@ import RestaurantSetupPage from '../pages/Dashboard/RestaurantSetupPage/Restaura
 import ProtectedRoute from './ProtectedRoute';
 
 import { mockOrders } from '../data/mockData';
-// La fonction reçoit TOUTES les props du "cerveau" (App.jsx)
-function AppRouter({ 
-    user, onLogin, onLogout
-}) {
+
+function AppRouter() {
 
      const [orders, setOrders] = useState(mockOrders);
-    // On crée des objets props pour les passer plus facilement
-    const authProps = { onLogin, onLogout };
+
 
     const updateOrderStatus = (orderId, newStatus) => {
         setOrders(prevOrders => prevOrders.map(order => 
@@ -56,10 +53,7 @@ function AppRouter({
             {/* --- I. ROUTES PUBLIQUES (Layout Principal avec Navbar/Footer) --- */}
             {/* ------------------------------------------------------------- */}
             <Route element={
-                <MainLayout 
-                    user={user} 
-                    onLogout={onLogout} 
-                   
+                <MainLayout                   
                 />}
             >
                 <Route path='/' element={<HomePage />} />
@@ -81,18 +75,18 @@ function AppRouter({
             {/* --- II. ROUTES D'AUTHENTIFICATION (Layouts FullScreen, reçoivent onLogin) --- */}
             {/* ------------------------------------------------------------------- */}
             {/* Les pages d'authentification sont autonomes et reçoivent onLogin pour la redirection */}
-            <Route path="/login" element={<LoginPage onLogin={onLogin} />} />
-            <Route path="/register" element={<RegisterPage onLogin={onLogin} />} />
-            <Route path="/register-partner" element={<PartnerRegisterPage onLogin={onLogin} />} /> 
+            <Route path="/login" element={<LoginPage  />} />
+            <Route path="/register" element={<RegisterPage  />} />
+            <Route path="/register-partner" element={<PartnerRegisterPage  />} /> 
 
 
             {/* ------------------------------------------------------------- */}
             {/* --- III. ROUTES PROTÉGÉES (Pour les Gérants) --- */}
             {/* ------------------------------------------------------------- */}
-            <Route element={<ProtectedRoute user={user} />}>
+            <Route element={<ProtectedRoute  />}>
                 
                 {/* Route Setup (sans Layout) */}
-                <Route path="/dashboard/setup" element={<RestaurantSetupPage onLogin={onLogin} />} /> 
+                <Route path="/dashboard/setup" element={<RestaurantSetupPage />} /> 
 
                 {/* Layout des pages avec Sidebar */}
                 <Route element={<DashboardLayout />}>

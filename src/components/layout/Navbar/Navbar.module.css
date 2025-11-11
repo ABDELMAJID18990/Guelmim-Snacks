@@ -19,7 +19,7 @@
   box-shadow: var(--navbar-shadow);
   position: relative;
   position: sticky; 
-  top: 0;   
+  top: 0;    
   z-index: 100;
 }
 

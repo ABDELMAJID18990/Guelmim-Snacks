@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+import { useDispatch } from 'react-redux';
+import { loginSuccess } from '../../store/authActions';
+
 // Importations
 import Input from '../../components/ui/Input/Input';
 import styles from './PartnerRegisterPage.module.css'; 
@@ -9,8 +12,9 @@ import { FiHome, FiMapPin, FiUser, FiMail, FiLock } from 'react-icons/fi';
 import illustration from '../../assets/images/login-illustration.jpg';
 import SimpleHeader from '../../components/layout/SimpleHeader/SimpleHeader'; 
 
-function PartnerRegisterPage({onLogin}) {
+function PartnerRegisterPage() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [nomRestaurant, setNomRestaurant] = useState('');
   const [adresseRestaurant, setAdresseRestaurant] = useState('');
@@ -28,7 +32,7 @@ function PartnerRegisterPage({onLogin}) {
       is_setup_complete: false // C'est la clé qui déclenchera la redirection vers le setup !
     };
 
-    onLogin(mockManagerUser);
+    dispatch(loginSuccess(mockManagerUser));
     alert("Votre compte partenaire a été créé ! Vous allez maintenant configurer votre restaurant.");
     
     // On redirige vers une page du dashboard. Le ProtectedRoute fera le reste !

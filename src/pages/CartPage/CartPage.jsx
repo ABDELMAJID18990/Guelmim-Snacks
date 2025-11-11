@@ -39,7 +39,7 @@ function CartPage() {
                 <span>{item.price.toFixed(2)} DH</span>
               </div>
               <div className={styles.itemQuantity}>
-                <button onClick={() => dispatch(updateQuantity({ id: item.id, newQuantity: item.quantity - 1 }))}><FiMinus /></button>
+                <button onClick={() => dispatch(updateQuantity(item.id, item.quantity - 1 ))}><FiMinus /></button>
                 <input type="text" value={item.quantity} readOnly />
                 <button onClick={() => dispatch(updateQuantity(item.id, item.quantity + 1))}><FiPlus /></button>
               </div>
