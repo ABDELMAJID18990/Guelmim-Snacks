@@ -22,7 +22,6 @@ import RestaurantSetupPage from '../pages/Dashboard/RestaurantSetupPage/Restaura
 
 // Importations des Gardiens et Gestionnaires d'État
 import ProtectedRoute from './ProtectedRoute';
-import DashboardStateManager from '../components/dashboard/DashboardStateManager'; // Assurez-vous que le chemin est correct
 
 import { mockOrders } from '../data/mockData';
 // La fonction reçoit TOUTES les props du "cerveau" (App.jsx)

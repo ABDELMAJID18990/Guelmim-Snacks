@@ -7,7 +7,6 @@ import OrderTicket from '../../../components/specific/OrderTicket/OrderTicket';
 
 
 
-
 // --- Le Composant Principal de la Page ---
 function DashboardOrdersPage({ orders, handleAcceptOrder, handleReadyOrder, handleCollectOrder, handleDeclineOrder  }) {
   // On utilise la méthode .filter() pour trier les commandes dans les bonnes colonnes

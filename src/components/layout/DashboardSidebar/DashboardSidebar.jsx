@@ -1,20 +1,20 @@
 import React from 'react';
-import { NavLink, Link, useNavigate } from 'react-router-dom'; // On importe NavLink et Link
+import { NavLink, Link, useNavigate } from 'react-router-dom'; 
 
-// Importation des icônes
+
 import { FiGrid, FiList, FiUser, FiLogOut } from 'react-icons/fi';
 
-// Importation des styles et du logo
+
 import styles from './DashboardSidebar.module.css';
-import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // Utilisez une version adaptée (blanche ou sombre)
+import logo from '../../../assets/logos/guelmim-snacks-logo.png'; 
 
 function DashboardSidebar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('user'); // On supprime la session de l'utilisateur
+    localStorage.removeItem('user');
     alert("Vous avez été déconnecté.");
-    navigate('/login'); // On le renvoie à la page de connexion
+    navigate('/login');
   };
 
   return (

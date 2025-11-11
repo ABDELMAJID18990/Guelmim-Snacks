@@ -6,11 +6,9 @@ import { mockDishes } from '../../../data/mockData';
 import { mockMenu } from '../../../data/mockData';
 
 
-// Importations
 import { FiPlus, FiEdit, FiTrash2 } from 'react-icons/fi';
 import ToggleSwitch from '../../../components/ui/ToggleSwitch/ToggleSwitch'; // On va créer ce composant !
 
-// Données Factices pour le Menu
 
 
 function DashboardMenuPage() {
