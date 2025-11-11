@@ -23,6 +23,8 @@ import RestaurantSetupPage from '../pages/Dashboard/RestaurantSetupPage/Restaura
 // Importations des Gardiens et Gestionnaires d'État
 import ProtectedRoute from './ProtectedRoute';
 
+import ScrollToTop from '../components/utils/ScrollToTop';
+
 import { mockOrders } from '../data/mockData';
 
 function AppRouter() {
@@ -48,6 +50,8 @@ function AppRouter() {
     const orderHandlers = { handleAcceptOrder, handleReadyOrder, handleCollectOrder, handleDeclineOrder };
 
     return (
+        <>
+        <ScrollToTop />
         <Routes>
             {/* ------------------------------------------------------------- */}
             {/* --- I. ROUTES PUBLIQUES (Layout Principal avec Navbar/Footer) --- */}
@@ -114,6 +118,8 @@ function AppRouter() {
             <Route path="*" element={<h1>Page non trouvée (404)</h1>} />
 
         </Routes>
+        </>
+        
     );
 }
 
