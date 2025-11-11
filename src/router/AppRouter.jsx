@@ -19,12 +19,12 @@ import BecomePartnerPage from '../pages/BecomePartnerPage/BecomePartnerPage';
 import DashboardOrdersPage from '../pages/Dashboard/DashboardOrdersPage/DashboardOrdersPage';
 import DashboardMenuPage from '../pages/Dashboard/DashboardMenuPage/DashboardMenuPage';
 import RestaurantSetupPage from '../pages/Dashboard/RestaurantSetupPage/RestaurantSetupPage';
+import DashboardAccountPage from '../pages/Dashboard/DashboardAccountPage/DashboardAccountPage';
 
 // Importations des Gardiens et Gestionnaires d'État
 import ProtectedRoute from './ProtectedRoute';
 
 import { mockOrders } from '../data/mockData';
-// La fonction reçoit TOUTES les props du "cerveau" (App.jsx)
 function AppRouter({ 
     user, onLogin, onLogout, 
     cartItems, onAddToCart, onUpdateQuantity, onRemoveFromCart 
@@ -111,8 +111,9 @@ function AppRouter({
                         } 
                     />
 
-                    {/* Route Menu : n'a pas besoin des commandes */}
                     <Route path="/dashboard/menu" element={<DashboardMenuPage />} />
+                    <Route path="/dashboard/account" element={<DashboardAccountPage />} />
+                    
                 </Route>
 
             </Route>

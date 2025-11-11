@@ -1,6 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-// Ce composant vérifie l'état de l'utilisateur dans le localStorage
 function ProtectedRoute({ user }) {
   
   
@@ -20,12 +19,11 @@ function ProtectedRoute({ user }) {
 
   // Cas 3 : Connecté ET la config EST complète ET on essaie d'aller sur la page de setup
   if (isSetupComplete && location.pathname === '/dashboard/setup') {
-    // On le renvoie vers la page principale du dashboard
     return <Navigate to="/dashboard/orders" replace />;
   }
 
   // Cas 4 : Tout est OK, on affiche la page demandée (Commandes, Menu, etc.)
-  return <Outlet />; // <Outlet /> est le placeholder pour le contenu enfant
+  return <Outlet />; 
 }
 
 export default ProtectedRoute;

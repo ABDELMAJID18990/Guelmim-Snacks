@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-// NOUVEAU : Importation des icônes depuis lLink bibliothèque
+
 import { FiSearch, FiShoppingCart } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
-// Importation des styles et du logo
 import styles from './Navbar.module.css';
-import logo from '../../../assets/logos/guelmim-snacks-logo.png'; // <-- Assurez-vous que ce chemin est correct !
+import logo from '../../../assets/logos/guelmim-snacks-logo.png'; 
 
 function Navbar({user, onLogout, cartItemCount}) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,7 +18,7 @@ function Navbar({user, onLogout, cartItemCount}) {
         <img src={logo} alt="Guelmim Snacks Logo" className={styles.logo} />
       </Link>
 
-      {/* Côté Centre & Droit : Liens et Bouton (pour écrans larges) */}
+      {/* Côté Droit : Liens de Navigation */}
       <nav className={styles.navDesktop}>
         <ul className={styles.navLinks}>
           <li><Link className={menu==="accueil" ? styles.active : ""} onClick={()=>setMenu("accueil")} to="/">Accueil</Link></li>
@@ -49,12 +48,8 @@ function Navbar({user, onLogout, cartItemCount}) {
           {user ? (
             // Si un utilisateur EST connecté
             <>
-              {/* On affiche un lien vers le compte ou un simple bonjour */}
-              <span className={styles.welcomeMessage}>
-                Bonjour, {user.name || user.email}
-              </span>
               
-              {/* Le bouton de déconnexion appelle la fonction onLogout */}
+              
               <button onClick={onLogout} className={styles.logoutButton}>
                 Déconnexion
               </button>
@@ -70,13 +65,11 @@ function Navbar({user, onLogout, cartItemCount}) {
 
       {/* Menu Hamburger pour les petits écrans */}
       <div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
-        {/* Les 3 barres du hamburger */}
         <span></span>
         <span></span>
         <span></span>
       </div>
 
-      {/* Le menu qui s'ouvre sur mobile */}
       {menuOpen && (
         <div className={styles.navMobile}>
           <ul>
