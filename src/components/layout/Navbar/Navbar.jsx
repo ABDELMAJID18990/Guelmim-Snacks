@@ -72,23 +72,42 @@ function Navbar({user, onLogout, cartItemCount}) {
 
       {menuOpen && (
         <div className={styles.navMobile}>
-          <ul>
+          {/* Section du haut : liens de navigation */}
+          <ul className={styles.navMobileLinks}>
             <li><Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
             <li><Link to="/snacks" onClick={() => setMenuOpen(false)}>Snacks</Link></li>
             <li><Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link></li>
-            <li>
-             {user ? (
-                <button onClick={() => { onLogout(); setMenuOpen(false); }} className={styles.actionButtonMobile}>
+          </ul>
+
+          {/* Section du bas : actions et connexion */}
+          <div className={styles.navMobileActions}>
+            <div className={styles.mobileActionButtons}>
+              <button className={styles.iconButton} aria-label="Rechercher">
+                <FiSearch />
+                <span>Rechercher</span>
+              </button>
+
+              <Link to="/cart" className={styles.iconButton} onClick={() => setMenuOpen(false)}>
+                <FiShoppingCart />
+                <span>Panier</span>
+                {cartItemCount > 0 && (
+                  <span className={styles.cartNotification}>{cartItemCount}</span>
+                )}
+              </Link>
+            </div>
+            
+            {user ? (
+              <div className={styles.mobileUserSection}>
+                <button onClick={() => { onLogout(); setMenuOpen(false); }} className={styles.logoutButtonMobile}>
                   Déconnexion
                 </button>
-              ) : (
-                <Link to="/login" className={styles.actionButtonMobile} onClick={() => setMenuOpen(false)}>
-                  Register/Login
-                </Link>
-              )}
-            </li>
-             
-          </ul>
+              </div>
+            ) : (
+              <Link to="/login" className={styles.loginButtonMobile} onClick={() => setMenuOpen(false)}>
+                Connexion / Inscription
+              </Link>
+            )}
+          </div>
         </div>
       )}
     </header>

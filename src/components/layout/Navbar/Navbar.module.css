@@ -177,44 +177,117 @@
     display: flex; /* On affiche l'icône hamburger */
   }
   .navMobile {
+    /* Mise en page globale du panneau */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
+    flex-direction: column; /* On empile les liens en haut et les actions en bas */
+    justify-content: space-between; /* Pour pousser les actions en bas */
+    position: fixed; /* 'fixed' au lieu de 'absolute' pour rester visible en scrollant */
     top: var(--navbar-height);
     left: 0;
     width: 100vw;
+    height: calc(100vh - var(--navbar-height)); /* Prend toute la hauteur restante */
     background: var(--navbar-background);
     box-shadow: var(--navbar-shadow);
-    padding: 20px 0;
+    padding: 30px 20px;
     animation: slideDown 0.3s ease-out both;
     z-index: 1000;
   }
-  .navMobile ul {
-    width: 100%;
+
+  .navMobileLinks {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: center;
   }
-  .navMobile li {
+
+  .navMobileLinks li {
     padding: 16px 0;
   }
-  .navMobile a {
+
+  .navMobileLinks a {
     text-decoration: none;
     color: var(--navbar-text-color);
-    font-size: 1.2rem;
+    font-size: 1.5rem; /* Liens plus gros et plus cliquables */
     font-weight: 600;
   }
-  .actionButtonMobile {
-    display: inline-block;
-    background: var(--navbar-button-bg);
-    color: var(--navbar-button-text);
-    padding: 12px 32px;
-    border-radius: 8px;
-    margin-top: 20px;
+
+  .navMobileActions {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mobileActionButtons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* Style partagé pour les boutons icônes du menu mobile */
+  .navMobile .iconButton {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1.5rem;
+  }
+  .navMobile .iconButton span {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .loginButtonMobile {
+    display: block;
+    width: 100%;
+    text-align: center; /* Important pour le Link */
+
+    /* On reprend les styles de .outlineButton */
+    background: transparent;
+    color: var(--navbar-text-color);
+    padding: 14px;
+    border-radius: 99px; /* Effet "pilule" */
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .loginButtonMobile:hover {
+    background-color: var(--navbar-button-bg);
+    border-color: var(--navbar-button-bg);
+    color: white;
+  }
+
+
+  /* Style pour le BOUTON de Déconnexion du menu mobile */
+  .logoutButtonMobile {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    /* On reprend les styles de .logoutButton (version desktop) */
+    background-color: transparent;
+    color: var(--navbar-button-bg);
+    padding: 14px;
+    border-radius: 99px; 
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .logoutButtonMobile:hover {
+    background-color: var(--navbar-button-bg);
+    border-color: var(--navbar-button-bg);
+    color: white;
+  }
+  
+  .mobileUserSection {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 }
 
@@ -242,7 +315,7 @@
   background-color: transparent;
   color: var(--navbar-button-bg) ;/* Rouge pour une action "destructive" comme la déconnexion */
   padding: 8px 24px;
-  border-radius: 99px; /* Effet "pilule" comme votre bouton Sign In */
+  border-radius: 99px; 
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
@@ -257,17 +330,15 @@
   border-color: var(--navbar-button-bg);
   color: white;
 }
-/* AJOUTEZ CECI À VOTRE Navbar.module.css */
 .cartNotification {
-  /* ... (styles existants) ... */
-  display: flex; /* Pour centrer le texte */
+  display: flex; 
   align-items: center;
   justify-content: center;
-  font-size: 0.7rem; /* Taille du chiffre */
-  color: white; /* Couleur du chiffre */
+  font-size: 0.7rem; 
+  color: white; 
   font-weight: bold;
-  width: 18px; /* Taille de la bulle */
-  height: 18px; /* Taille de la bulle */
+  width: 18px; 
+  height: 18px; 
   top: -5px;
   right: -8px;
 }
