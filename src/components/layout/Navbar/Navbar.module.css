@@ -65,7 +65,7 @@
   border-bottom: 3px solid transparent; /* Bordure invisible par défaut */
   transition: color 0.2s;
 }
-.navLinks a:hover {
+.navLinks a:hover, .navMobileLinks a:hover{
   color: var(--navbar-button-bg);
 }
 /* Le style du lien actif, géré par React */

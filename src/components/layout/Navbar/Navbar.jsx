@@ -90,9 +90,24 @@ function Navbar() {
         <div className={styles.navMobile}>
           {/* Section du haut : liens de navigation */}
           <ul className={styles.navMobileLinks}>
-            <li><Link to="/" onClick={() => setMenuOpen(false)}>Accueil</Link></li>
-            <li><Link to="/snacks" onClick={() => setMenuOpen(false)}>Snacks</Link></li>
-            <li><Link to="/menu" onClick={() => setMenuOpen(false)}>Menu</Link></li>
+            <li>
+              <Link className={menu==="accueil" ? styles.active : ""} onClick={()=>{
+              setMenu("accueil")
+              setMenuOpen(false)
+              }} to="/">Accueil</Link>
+              </li>
+            <li>
+              <Link className={menu==="snacks" ? styles.active : ""} onClick={()=>{
+              setMenu("snacks")
+              setMenuOpen(false)
+              }} to="/snacks">Snacks</Link>
+              </li>
+            <li>
+              <Link className={menu==="menu" ? styles.active : ""} onClick={()=>{
+              setMenu("menu")
+              setMenuOpen(false)
+              }} to="/menu">Menu</Link>
+              </li>
           </ul>
 
           {/* Section du bas : actions et connexion */}
