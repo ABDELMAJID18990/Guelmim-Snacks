@@ -1,10 +1,7 @@
-// src/store/cartReducer.js
-
 import { CART_ADD_ITEM, CART_UPDATE_QUANTITY, CART_REMOVE_ITEM } from './actionTypes';
 
 const initialState = [];
 
-// Le Reducer est une fonction PURE qui reçoit l'état et l'action
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
         case CART_ADD_ITEM: {

@@ -9,7 +9,6 @@ const initialState = {
 export const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case AUTH_LOGIN_SUCCESS:
-      // On sauvegarde l'utilisateur dans le localStorage
       localStorage.setItem('user', JSON.stringify(action.payload));
       // On retourne un NOUVEL état avec l'utilisateur
       return {
@@ -18,18 +17,14 @@ export const authReducer = (state = initialState, action) => {
       };
 
     case AUTH_LOGOUT:
-      // On retire l'utilisateur du localStorage
       localStorage.removeItem('user');
-      // On retourne un NOUVEL état avec l'utilisateur à null
       return {
         ...state,
         user: null
       };
       
     case AUTH_UPDATE_USER: {
-      // On fusionne l'ancien état utilisateur avec les nouvelles données
       const updatedUser = { ...state.user, ...action.payload };
-      // On met à jour le localStorage ET l'état
       localStorage.setItem('user', JSON.stringify(updatedUser));
       return {
         ...state,
