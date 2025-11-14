@@ -14,11 +14,11 @@ export const mockSnackData = {
 };
 
 export const mockDishes = [
-  { id: 1, name: "Pizza Regina", description: "La classique : sauce tomate, mozzarella, jambon, et champignons frais.", price: 50.00, prepTime: "20 min", imageUrl: "https://images.unsplash.com/photo-1594007654729-407eedc4be65" },
-  { id: 2, name: "Tacos Poulet Gratiné", description: "Poulet mariné, frites maison, sauce fromagère onctueuse, le tout gratiné au four.", price: 35.00, prepTime: "15 min", imageUrl: "https://images.unsplash.com/photo-1562086181-4494c643194a" },
-  { id: 3, name: "Burger 'Sahara'", description: "Double steak, cheddar, bacon de dinde, oignons frits et sauce barbecue fumée.", price: 45.00, prepTime: "15 min", imageUrl: "https://images.unsplash.com/photo-1571091718767-18b5b1457add" },
-  { id: 4, name: "Pizza Végétarienne", description: "Légumes de saison grillés, sauce tomate, mozzarella, olives noires.", price: 45.00, prepTime: "20 min", imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591" },
-  { id: 5, name: "Mojito Fraise (sans alcool)", description: "Boisson pétillante et rafraîchissante à la fraise et à la menthe.", price: 20.00, prepTime: "5 min", imageUrl: "https://images.unsplash.com/photo-1543364195-bfe6e49323d7" }
+  { id: 1, name: "Pizza Regina", description: "La classique : sauce tomate, mozzarella, jambon, et champignons frais.", price: 50.00, category: 'Pizza', prepTime: "20 min", imageUrl: "https://images.unsplash.com/photo-1594007654729-407eedc4be65" },
+  { id: 2, name: "Tacos Poulet Gratiné", description: "Poulet mariné, frites maison, sauce fromagère onctueuse, le tout gratiné au four.", price: 35.00, category: 'Tacos', prepTime: "15 min", imageUrl: "https://images.unsplash.com/photo-1562086181-4494c643194a" },
+  { id: 3, name: "Burger 'Sahara'", description: "Double steak, cheddar, bacon de dinde, oignons frits et sauce barbecue fumée.", price: 45.00, category: 'Burgers', prepTime: "15 min", imageUrl: "https://images.unsplash.com/photo-1571091718767-18b5b1457add" },
+  { id: 4, name: "Pizza Végétarienne", description: "Légumes de saison grillés, sauce tomate, mozzarella, olives noires.", price: 45.00, category: 'Pizza', prepTime: "20 min", imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591" },
+  { id: 5, name: "Mojito Fraise (sans alcool)", description: "Boisson pétillante et rafraîchissante à la fraise et à la menthe.", price: 20.00, category: 'Boissons', prepTime: "5 min", imageUrl: "https://images.unsplash.com/photo-1543364195-bfe6e49323d7" }
 ];
 
 export const mockSnacks = [
@@ -29,7 +29,7 @@ export const mockSnacks = [
     rating: 4.8,
     priceRange: '30 - 80 DH',
     address: 'Centre Ville',
-    imageUrl: 'https://images.unsplash.com/photo-1574126154517-d1e0d89ef734'
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4SxdR6cjW45b6kd8m5-MLvgCzitQHXSjGA&s'
   },
   {
     id: 2, // ID unique pour la route /snack/2

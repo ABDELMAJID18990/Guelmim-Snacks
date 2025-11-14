@@ -1,16 +1,12 @@
-// src/pages/MenuPage/MenuPage.jsx
-
 import React, { useState } from 'react';
 import styles from './MenuPage.module.css';
 
-// Importez vos données centralisées
 import { mockDishes } from '../../data/mockData';
 
-// Importez vos composants réutilisables
 import DishCard from '../../components/specific/DishCard/DishCard';
 import Badge from '../../components/ui/Badge/Badge'; // Assurez-vous que ce chemin est correct
 
-// On définit les catégories disponibles.
+
 const categories = ["Tous", "Pizza", "Tacos", "Burgers", "Boissons"];
 
 function MenuPage() {

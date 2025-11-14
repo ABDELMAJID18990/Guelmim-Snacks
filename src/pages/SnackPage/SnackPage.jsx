@@ -20,6 +20,10 @@ function SnackPage({ onAddToCart }) {
   const { snackId } = useParams();
   const [activeCategory, setActiveCategory] = useState("Tous");
 
+    const filteredDishes = activeCategory === "Tous" 
+      ? mockDishes // Si "Tous" est sélectionné, on montre tout
+      : mockDishes.filter(dish => dish.category === activeCategory);
+
   return (
       <main>
         {/* L'en-tête du Snack, rempli avec les données */}
@@ -43,7 +47,7 @@ function SnackPage({ onAddToCart }) {
             </div>
 
             <div className={styles.dishesGrid}>
-              {mockDishes.map(dish => (
+              {filteredDishes.map(dish => (
                 <DishCard key={dish.id} dish={dish} onAddToCart={onAddToCart}  />
               ))}
             </div>

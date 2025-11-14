@@ -1,4 +1,3 @@
-import React from 'react';
 import styles from './Badge.module.css';
 
 // Le composant reçoit le texte (children) et une prop booléenne 'isActive'
