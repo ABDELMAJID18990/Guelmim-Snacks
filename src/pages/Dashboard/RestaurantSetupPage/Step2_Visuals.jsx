@@ -1,4 +1,3 @@
-// Step2_Visuals.jsx
 import React from 'react';
 import styles from './RestaurantSetupPage.module.css';
 import { FiUpload } from 'react-icons/fi';
@@ -17,7 +16,7 @@ function Step2_Visuals({ data, update }) {
   return (
     <div className={styles.stepContent}>
       <h2>Ajoutez vos visuels</h2>
-      <div className={styles.uploadGrid}>
+      <div className={styles.sigleUploader}>
         <div className={styles.formGroup}>
           <label>Votre Logo</label>
           <label htmlFor="logo-upload" className={styles.uploadBox}>
@@ -28,17 +27,6 @@ function Step2_Visuals({ data, update }) {
             )}
           </label>
           <input id="logo-upload" type="file" onChange={(e) => handleFileChange(e, 'logo', 'logoPreview')} />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Image de Couverture</label>
-          <label htmlFor="cover-upload" className={styles.uploadBox}>
-            {data.coverPreview ? (
-              <img src={data.coverPreview} alt="Aperçu de la couverture" className={styles.previewImage} />
-            ) : (
-              <span><FiUpload /> Choisir un fichier</span>
-            )}
-          </label>
-          <input id="cover-upload" type="file" onChange={(e) => handleFileChange(e, 'coverImage', 'coverPreview')} />
         </div>
       </div>
     </div>

@@ -46,10 +46,8 @@ function RestaurantSetupPage({ onLogin }) {
       is_setup_complete: true // La clé du système !
     };
 
-    // On sauvegarde cette information dans le localStorage
     localStorage.setItem('user', JSON.stringify(mockUser));
     onLogin({ is_setup_complete: true }); 
-    // On prévient l'utilisateur et on le redirige
     alert("Votre restaurant a été configuré avec succès ! Vous allez être redirigé vers votre tableau de bord.");
     navigate('/dashboard/menu');
   };

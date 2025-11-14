@@ -25,7 +25,6 @@ function LoginPage({onLogin}) {
     navigate('/'); // Redirige vers la page d'accueil
 };
 
-// Nouvelle fonction : Le gérant n'utilise pas le même formulaire que le client
 const handleManagerLogin = (event) => {
     event.preventDefault();
     // Simule la vérification et crée un utilisateur gérant
@@ -33,11 +32,11 @@ const handleManagerLogin = (event) => {
         email: email, 
         role: 'manager', 
         // Simule que le gérant a déjà terminé la configuration !
-        is_setup_complete: true // Clé du succès : on simule qu'il est déjà un gérant configuré
+        is_setup_complete: true 
     }; 
     onLogin(mockManagerUser);
     alert(`Bienvenue dans votre tableau de bord, Gérant !`);
-    navigate('/dashboard/orders'); // Redirige vers le tableau de bord
+    navigate('/dashboard/orders');
 };
 
   return (
@@ -49,7 +48,6 @@ const handleManagerLogin = (event) => {
         </div>
         <div className={styles.formSide}>
           <div className={styles.formContainer}>
-            {/* 3. SUPPRIMEZ L'ANCIEN LOGO ICI */}
             <h1>Bon retour parmi nous !</h1>
           
           <form >
@@ -86,7 +84,7 @@ const handleManagerLogin = (event) => {
             <button 
                 type="button" 
                 className={`${styles.actionButton} ${styles.primaryButton}`}
-                onClick={handleClientLogin} // ACTION 2 : Client (Redirection Accueil)
+                onClick={handleClientLogin} 
             >
                 <FiLogIn /> Connexion Client
             </button>
@@ -94,7 +92,7 @@ const handleManagerLogin = (event) => {
             <button 
                 type="button" 
                 className={`${styles.actionButton} ${styles.secondaryButton}`}
-                onClick={handleManagerLogin} // ACTION 1 : PRIORITÉ au Gérant (Redirection Dashboard)
+                onClick={handleManagerLogin} 
             >
                 <FiLogIn /> Connexion Gérant
             </button>

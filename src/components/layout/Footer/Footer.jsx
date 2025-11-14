@@ -41,7 +41,7 @@ function Footer() {
           <h3 className={styles.columnTitle}>Guelmim Snacks</h3>
           <ul className={styles.linkList}>
             <li><Link to="#">Comment ça marche ?</Link></li>
-            <li><Link to="#">Devenir Partenaire</Link></li>
+            <li><Link to="/devenir-partenaire">Devenir Partenaire</Link></li>
             <li><Link to="#">Contactez-nous</Link></li>
           </ul>
         </div>
@@ -50,7 +50,7 @@ function Footer() {
         <div className={styles.column}>
           <h3 className={styles.columnTitle}>Contact</h3>
           <ul className={styles.linkList}>
-            <li><Link to="mailto:[email protected]">[email protected]</Link></li>
+            <li><Link to="mailto:[email protected]">abdelmajid.elainousi@gmail.com</Link></li>
             <li><span>Guelmim, Maroc</span></li>
           </ul>
         </div>

@@ -1,6 +1,4 @@
-// src/components/layout/DashboardLayout/DashboardLayout.jsx
 
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 import DashboardSidebar from '../DashboardSidebar/DashboardSidebar'; // On importe la Sidebar que vous avez déjà créée
 import styles from './DashboardLayout.module.css';

@@ -12,13 +12,22 @@ const initialCartItems = [
 function App() {
     const [cartItems, setCartItems] = useState(initialCartItems);
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
 
     useEffect(() => {
-    // On vérifie si un utilisateur est déjà "connecté" dans le localStorage
-    const storedUser = localStorage.getItem('user');
-    if (storedUser) {
-      setUser(JSON.parse(storedUser));
+
+    try {
+      // On essaie de lire l'utilisateur depuis le localStorage
+      const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        setUser(JSON.parse(storedUser));
+      }
+    } catch (error) {
+      console.error("Erreur lors de la lecture du localStorage", error);
+      setUser(null);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -68,6 +77,10 @@ function App() {
   const handleRemoveFromCart = (itemId) => {
     setCartItems(cartItems.filter(item => item.id !== itemId));
   };
+
+  if (isLoading) {
+    return <div>Chargement de la session...</div>; // Ou un composant de spinner
+  }
 
     return <AppRouter
           user={user} 

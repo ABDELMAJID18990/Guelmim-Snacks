@@ -23,7 +23,7 @@ const steps = [
 
 function HowItWorksSection() {
   return (
-    <section className={styles.section}>
+    <section className={styles.section} >
       <h2 className={styles.title}>Commander n'a jamais été aussi simple</h2>
       <div className={styles.stepsGrid}>
         {steps.map((step, index) => (

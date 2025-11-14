@@ -98,7 +98,7 @@ function AppRouter({
                 {/* ------------------------------------------------------------- */}
                 <Route element={<ProtectedRoute user={user} />}>
                     
-                    {/* Route Setup (sans Layout) */}
+                   
                     <Route path="/dashboard/setup" element={<RestaurantSetupPage onLogin={onLogin} />} /> 
 
                     {/* Layout des pages avec Sidebar */}
