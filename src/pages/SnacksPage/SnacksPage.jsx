@@ -1,30 +1,38 @@
-// src/pages/SnacksPage/SnacksPage.jsx
-
-import React from 'react';
-import styles from './SnacksPage.module.css';
-
-// 1. Importez les données factices centralisées
-import { mockSnacks } from '../../data/mockData';
-
-// 2. Importez le composant que nous allons réutiliser
-import SnackCard from '../../components/specific/SnackCard/SnackCard';
+import React, { useState, useEffect } from "react";
+import styles from "./SnacksPage.module.css";
+import SnackCard from "../../components/specific/SnackCard/SnackCard";
+import  axios  from "axios";
 
 function SnacksPage() {
+  const [snacks, setSnacks] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    axios
+      .get("http://127.0.0.1:8000/api/snacks")
+      .then((response) => {
+
+        console.log("Données reçues de Laravel:", response.data.logo_url);
+        setSnacks(response.data);
+        setLoading(false);
+
+      })
+      .catch((error) => console.error("Erreur API:", error));
+  }, []);
+
+    if (loading) return <p>Chargement des snacks...</p>;
+
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <h1>Découvrez nos restaurants partenaires</h1>
         <p>Tous les meilleurs snacks de Guelmim, réunis au même endroit.</p>
-        {/* Plus tard, on pourra ajouter une barre de recherche ici ! */}
       </header>
-      
-      {/* 3. C'est ici que la magie opère : on affiche la grille des snacks */}
+
       <main className={styles.grid}>
-        {mockSnacks.map(snack => (
-          <SnackCard 
-            key={snack.id} // La "key" est essentielle pour React lors du mapping
-            snack={snack}   // On passe toutes les données du snack au composant enfant
-          />
+        {snacks.map((snack) => (
+          <SnackCard key={snack.id} snack={snack} />
         ))}
       </main>
     </div>

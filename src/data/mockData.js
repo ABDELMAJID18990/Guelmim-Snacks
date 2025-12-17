@@ -23,7 +23,7 @@ export const mockDishes = [
 
 export const mockSnacks = [
   {
-    id: 1, // ID unique pour la route /snack/1
+    id: 1, 
     name: 'Bistro Ali',
     category: 'Pizza au feu de bois & Tacos',
     rating: 4.8,
@@ -31,33 +31,25 @@ export const mockSnacks = [
     address: 'Centre Ville',
     imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd4SxdR6cjW45b6kd8m5-MLvgCzitQHXSjGA&s'
   },
-  {
-    id: 2, // ID unique pour la route /snack/2
-    name: 'Burger Queen',
-    category: 'Burgers & Grillades',
-    rating: 4.6,
-    priceRange: '35 - 90 DH',
-    address: 'Hay El Matar',
-    imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd'
-  },
-  {
-    id: 3, // ID unique pour la route /snack/3
-    name: 'Tacos de Lyon',
-    category: 'Tacos Français & Poutines',
-    rating: 4.7,
-    priceRange: '25 - 50 DH',
-    address: 'Av. El Kadi Ayad',
-    imageUrl: 'https://images.unsplash.com/photo-1628198797371-38a4d4ea0a15'
-  },
-  {
-    id: 4, // ID unique pour la route /snack/4
+   {
+    id: 2, 
     name: 'Oasis Salade',
     category: 'Salades & Jus Frais',
     rating: 4.9,
     priceRange: '30 - 60 DH',
-    address: 'Près de la place principale',
+    address: 'Hay El Matar',
     imageUrl: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c'
-  }
+  },
+  {
+    id: 3, 
+    name: 'Snack Nouhaila',
+    category: 'Tacos mexican & Poutines',
+    rating: 4.7,
+    priceRange: '25 - 50 DH',
+    address: 'Av. El Kadi Ayad',
+    imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKSJc3krEdwsJeLb_cza85i--K_fDyJAyGTg&s'
+  },
+ 
 ];
 
 export const mockOrders = [

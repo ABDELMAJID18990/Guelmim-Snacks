@@ -1,7 +1,7 @@
 import React from 'react';
 import { FiClock, FiStar, FiMapPin } from 'react-icons/fi';
 import styles from './SnackCard.module.css';
-import placeholderImage from '../../../assets/images/snack-image-placeholder.png'; // Image de snack (SVG)
+import placeholderImage from '../../../assets/images/snack-image-placeholder.png'; 
 import { Link } from 'react-router-dom';
 
 function SnackCard({ snack = {} }) {
@@ -11,13 +11,13 @@ function SnackCard({ snack = {} }) {
     rating = 4.5,
     priceRange = "25 - 60 DH",
     address = "Centre Ville, Guelmim",
-    imageUrl = placeholderImage
+    logo_url = placeholderImage
   } = snack;
 
   return (
     <Link to={`/snack/${snack.id}`}  className={styles.card}>
       <div className={styles.imageContainer}>
-        <img src={imageUrl} alt={name} className={styles.cardImage} />
+        <img src={logo_url} alt={name} className={styles.cardImage} />
       </div>
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{name}</h3>
