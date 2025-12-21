@@ -20,6 +20,45 @@ Guelmim Snacks est une application Full-Stack (SPA) conçue pour digitaliser et 
 
 ---
 
+## 📸 Aperçu du Projet
+
+### 🏠 L'Expérience Client
+*Une interface moderne, fluide et responsive pour commander sans attente.*
+
+| Page d'Accueil | Le Menu & Filtres |
+|:---:|:---:|
+| ![Home Page](public/screenshots/home.png) | ![Menu Page](public/screenshots/menu.png) |
+| *Vitrine attractive avec CTA clairs* | *Filtrage dynamique par catégories* |
+
+| Détail du Snack | Panier Interactif |
+|:---:|:---:|
+| ![Snack Page](public/screenshots/snack.png) | ![Cart Page](public/screenshots/cart.png) |
+| *Présentation du restaurant et ses plats* | *Gestion des quantités en temps réel* |
+
+---
+
+### 👨‍🍳 L'Espace Gérant (Partenaire)
+*Un tableau de bord puissant pour gérer le restaurant et le flux de commandes.*
+
+#### 1. Authentification & Onboarding
+Un système de connexion sécurisé et un assistant de configuration (Wizard) pour les nouveaux restaurants.
+
+| Connexion Sécurisée | Configuration (Wizard) |
+|:---:|:---:|
+| ![Login](public/screenshots/login-page.png) | ![Setup](public/screenshots/setup-step1.png) |
+
+#### 2. Gestion des Commandes (Kanban)
+Suivi en temps réel des commandes : **Nouvelles** -> **En Préparation** -> **Prêtes**.
+
+![Dashboard Orders](public/screenshots/dashboard-kanban.png)
+
+#### 3. Gestion du Menu (CRUD)
+Ajout, modification et suppression des plats via une interface intuitive.
+
+![Dashboard Menu](public/screenshots/dashboard-menu-list.png)
+
+---
+
 ## 🚀 Fonctionnalités Clés
 
 ### 👤 Pour les Clients
@@ -48,7 +87,7 @@ Guelmim Snacks est une application Full-Stack (SPA) conçue pour digitaliser et 
 *   **Styling :** CSS Modules (Design Responsive & Mobile First)
 
 ### Back-End (API)
-*   **Framework :** Laravel 11
+*   **Framework :** Laravel 12
 *   **Architecture :** API RESTful
 *   **Base de Données :** MySQL
 *   **Authentification :** Laravel Sanctum (Tokens API)
@@ -168,5 +207,9 @@ Le projet respecte les principes de **séparation des préoccupations** :
 
 Projet réalisé dans le cadre du **projet de fin de module ReactJS** et du **module Laravel**.
 
+
+## 👤 Auteur
+**Abdelmajid El ainousi**  
+[🌐 Mon Portfolio](https://elainousi-portfolio.vercel.app/) | [💼 Mon LinkedIn](https://www.linkedin.com/in/abdelmajid-el-ainousi/)
 
 ```
