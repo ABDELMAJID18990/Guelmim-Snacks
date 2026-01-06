@@ -1,0 +1,344 @@
+/* --- Variables de Design --- */
+:root {
+  --navbar-background: #fff;
+  --navbar-text-color: #555; /* Couleur du texte adoucie pour un look moderne */
+  --navbar-button-bg: #ff6347; /* Tomate Chaude */
+  --navbar-button-text: #fff;
+  --navbar-height: 80px; /* Hauteur augmentée pour plus d'espace */
+  --navbar-shadow: 0 4px 12px rgba(0,0,0,0.06); /* Ombre plus douce */
+}
+
+/* --- Structure Principale --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--navbar-height);
+  padding: 0 5vw; /* Marges latérales responsives */
+  background: var(--navbar-background);
+  box-shadow: var(--navbar-shadow);
+  position: relative;
+  position: sticky; 
+  top: 0;          
+  z-index: 100;
+}
+
+/* --- Logo --- */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo {
+  height: 155px;
+  width: auto;
+  transition: transform 0.25s cubic-bezier(.4,1.3,.6,1);
+}
+.logoLink:hover .logo {
+  transform: scale(1.07) rotate(-4deg);
+}
+
+/* --- Navigation Desktop --- */
+.navDesktop {
+  display: flex;
+  align-items: center;
+  gap: 40px; /* Espace entre les liens de navigation et le groupe d'actions */
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: var(--navbar-text-color);
+  font-weight: 600; /* Police légèrement plus grasse */
+  font-size: 1rem;
+  padding-bottom: 5px; /* Espace pour la bordure en dessous */
+  border-bottom: 3px solid transparent; /* Bordure invisible par défaut */
+  transition: color 0.2s;
+}
+.navLinks a:hover, .navMobileLinks a:hover  {
+  color: var(--navbar-button-bg);
+}
+/* Le style du lien actif, géré par React */
+.active {
+  color: #111 !important; /* Couleur noire plus affirmée pour l'actif */
+  border-bottom-color: var(--navbar-button-bg);
+}
+
+/* --- Groupe d'actions de droite (Icônes et Bouton) --- */
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: var(--navbar-text-color);
+  font-size: 1.6rem; /* Taille des icônes augmentée */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.iconButton:hover {
+  color: var(--navbar-button-bg);
+  transform: scale(1.1);
+}
+
+.cartWrapper {
+  position: relative;
+}
+
+.cartNotification {
+  position: absolute;
+  top: -2px;
+  right: -3px;
+  width: 9px;
+  height: 9px;
+  background-color: var(--navbar-button-bg);
+  border-radius: 50%;
+  border: 2px solid var(--navbar-background);
+}
+
+.outlineButton {
+  background: transparent;
+  color: var(--navbar-text-color);
+  padding: 8px 24px;
+  border-radius: 99px; /* Effet "pilule" */
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  white-space: nowrap; /* Empêche le texte d'aller à la ligne */
+  transition: all 0.2s;
+}
+
+.outlineButton:hover {
+  
+  background-color: var(--navbar-button-bg);
+  border-color: var(--navbar-button-bg);
+  color: white;
+}
+
+/* --- Hamburger Icon --- */
+.menuIcon {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 2000;
+}
+.menuIcon span {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: var(--navbar-text-color);
+  border-radius: 2px;
+}
+
+/* --- Menu Mobile --- */
+.navMobile {
+  display: none;
+}
+
+/* --- Responsive : Styles pour tablettes et mobiles --- */
+@media (max-width: 992px) { /* Breakpoint pour tablettes */
+  .navbar {
+    padding: 0 4vw;
+  }
+  .navDesktop {
+    gap: 24px;
+  }
+  .navLinks {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) { /* Breakpoint pour mobiles */
+  .navDesktop {
+    display: none; /* On cache toute la navigation de bureau */
+  }
+  .menuIcon {
+    display: flex; /* On affiche l'icône hamburger */
+  }
+  .navMobile {
+    /* Mise en page globale du panneau */
+    display: flex;
+    flex-direction: column; /* On empile les liens en haut et les actions en bas */
+    justify-content: space-between; /* Pour pousser les actions en bas */
+    position: fixed; /* 'fixed' au lieu de 'absolute' pour rester visible en scrollant */
+    top: var(--navbar-height);
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - var(--navbar-height)); /* Prend toute la hauteur restante */
+    background: var(--navbar-background);
+    box-shadow: var(--navbar-shadow);
+    padding: 30px 20px;
+    animation: slideDown 0.3s ease-out both;
+    z-index: 1000;
+  }
+
+  .navMobileLinks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .navMobileLinks li {
+    padding: 16px 0;
+  }
+
+  .navMobileLinks a {
+    text-decoration: none;
+    color: var(--navbar-text-color);
+    font-size: 1.5rem; /* Liens plus gros et plus cliquables */
+    font-weight: 600;
+  }
+
+  .navMobileActions {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .mobileActionButtons {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  /* Style partagé pour les boutons icônes du menu mobile */
+  .navMobile .iconButton {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 1.5rem;
+  }
+  .navMobile .iconButton span {
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  .loginButtonMobile {
+    display: block;
+    width: 100%;
+    text-align: center; /* Important pour le Link */
+
+    /* On reprend les styles de .outlineButton */
+    background: transparent;
+    color: var(--navbar-text-color);
+    padding: 14px;
+    border-radius: 99px; /* Effet "pilule" */
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .loginButtonMobile:hover {
+    background-color: var(--navbar-button-bg);
+    border-color: var(--navbar-button-bg);
+    color: white;
+  }
+
+
+  /* Style pour le BOUTON de Déconnexion du menu mobile */
+  .logoutButtonMobile {
+    display: block;
+    width: 100%;
+    text-align: center;
+
+    /* On reprend les styles de .logoutButton (version desktop) */
+    background-color: transparent;
+    color: var(--navbar-button-bg);
+    padding: 14px;
+    border-radius: 99px; 
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .logoutButtonMobile:hover {
+    background-color: var(--navbar-button-bg);
+    border-color: var(--navbar-button-bg);
+    color: white;
+  }
+  
+  .mobileUserSection {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Animation pour le menu mobile */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* --- Styles pour l'état connecté (à ajouter à la fin du fichier) --- */
+
+.welcomeMessage {
+  font-weight: 500;
+  color: #333;
+  white-space: nowrap; /* Empêche le nom de l'utilisateur de passer à la ligne */
+  padding: 8px 0; /* Alignement vertical avec les boutons */
+}
+
+.logoutButton {
+  background-color: transparent;
+  color: var(--navbar-button-bg) ;/* Rouge pour une action "destructive" comme la déconnexion */
+  padding: 8px 24px;
+  border-radius: 99px; 
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  border: 2px solid #ddd;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: var(--navbar-button-bg);
+  border-color: var(--navbar-button-bg);
+  color: white;
+}
+.cartNotification {
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem; 
+  color: white; 
+  font-weight: bold;
+  width: 18px; 
+  height: 18px; 
+  top: -5px;
+  right: -8px;
+}

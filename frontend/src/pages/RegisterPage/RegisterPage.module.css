@@ -1,0 +1,55 @@
+/* On importe les styles de la page de connexion pour tout réutiliser ! */
+@import '../LoginPage/LoginPage.module.css';
+
+/* --- On ajoute ou surcharge seulement ce qui change --- */
+
+.formContainer h1 {
+  font-size: 2.2rem;
+  margin-bottom: 12px; /* Moins d'espace en bas */
+}
+
+.subtitle {
+  color: #777;
+  margin-bottom: 32px;
+  font-size: 1rem;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+/* On change le nom de la classe du bouton pour plus de clarté */
+.registerButton {
+  /* On réutilise 90% du style du loginButton */
+  width: 100%;
+  padding: 14px;
+  background-color: #FF6347; /* Votre couleur primaire */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.registerButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(255, 99, 71, 0.25);
+}
+
+.loginLink {
+  text-align: center;
+  margin-top: 32px;
+  color: #555;
+}
+
+.loginLink a {
+  color: #FF6347;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.loginLink a:hover {
+  text-decoration: underline;
+}

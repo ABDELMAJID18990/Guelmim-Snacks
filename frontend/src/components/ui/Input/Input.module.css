@@ -1,0 +1,51 @@
+.inputWrapper {
+  position: relative;
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 14px 16px;
+  padding-left: 50px; 
+  border-radius: 8px;
+  border: 2px solid #eee;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #FF6347; 
+  box-shadow: 0 0 0 3px rgba(255, 99, 71, 0.15);
+}
+.hasError {
+  border-color: #e53e3e !important; 
+  background-color: #fff5f5;
+  animation: shake 0.3s; /* Petite animation sympa */
+}
+
+.errorMessage {
+  color: #e53e3e;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+  margin-left: 4px;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
