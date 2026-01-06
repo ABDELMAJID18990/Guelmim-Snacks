@@ -92,14 +92,16 @@ Ajout, modification et suppression des plats via une interface intuitive.
 
   - **Version 1 (Recommandée) :** Redux Toolkit (RTK)
   - Version 2 : Redux Classique (Actions/Reducers)
-  - Version 3 : `useState` & Prop Drillingk# 🚧 Guelmim Snacks (En Développement)
+  - Version 3 : `useState` & Prop Drilling
+- **Styling :** CSS Modules (Design Responsive & Mobile First)
 
-![Statut](https://img.shields.io/badge/Statut-En%20D%C3%A9veloppement-yellow) ![Version](https://img.shields.io/badge/Version-MVP%201.0-blue)
-
-Plateforme Click & Collect en temps réel pour la restauration rapide — prototype académique visant à digitaliser la prise de commandes pour les snacks locaux.
-
-Résumé rapide : application Full‑Stack (React + Laravel) proposant une SPA client, un tableau de bord pour les gérants et une API REST.
-
+### Back-End (API)
+*   **Framework :** Laravel 12
+*   **Architecture :** API RESTful
+*   **Base de Données :** MySQL
+*   **Authentification :** Laravel Sanctum (Tokens API)
+*   **ORM :** Eloquent (Relations & Seeders)
+  
 ---
 
 
